@@ -1,5 +1,7 @@
+import { NavBarContainer } from "./style";
+
 const NavBar = () => {
-  return <div></div>;
+  return <NavBarContainer></NavBarContainer>;
 };
 
 export default NavBar;
