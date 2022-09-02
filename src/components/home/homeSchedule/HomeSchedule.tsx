@@ -4,6 +4,7 @@ import "tui-calendar/dist/tui-calendar.css";
 import "tui-date-picker/dist/tui-date-picker.css";
 import "tui-time-picker/dist/tui-time-picker.css";
 import "@toast-ui/calendar/dist/toastui-calendar.min.css";
+import { useGetSchedules } from "../../../queries/schedule/schedule.query";
 
 const HomeSchedule = () => {
   const initialEvents = [
@@ -24,6 +25,10 @@ const HomeSchedule = () => {
       target: "1학년",
     },
   ];
+
+  const { data } = useGetSchedules({ page: 1, limit: 100 });
+
+  console.log(data);
 
   return (
     <HomeScheduleContainer>
