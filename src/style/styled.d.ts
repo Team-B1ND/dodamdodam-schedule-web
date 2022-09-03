@@ -4,5 +4,9 @@ declare module "styled-components" {
   export interface DefaultTheme {
     contrast: string;
     backgroundColor: string;
+    backgroundColor2: string;
+    backgroundPointColor: string;
+    borderColor: string;
+    darkmodeButtonColor: string;
   }
 }
