@@ -48,3 +48,11 @@ export const HomeScheduleHeaderArrowButton = styled.button`
     background-color: rgba(0, 0, 0, 0.06);
   }
 `;
+
+export const HomeScheduleHeaderDate = styled.p`
+  font-size: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  color: ${({ theme }) => theme.contrast};
+  margin-left: 15px;
+`;

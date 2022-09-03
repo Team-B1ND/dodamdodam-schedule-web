@@ -12,3 +12,7 @@ export interface Schedule {
 export interface SchedulesResponse extends Response {
   data: Schedule[];
 }
+
+export interface SchduelsByDateResponse extends Response {
+  data: Schedule[];
+}

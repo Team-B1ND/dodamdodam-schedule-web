@@ -2,9 +2,9 @@ import Calendar from "@toast-ui/react-calendar";
 import "tui-date-picker/dist/tui-date-picker.css";
 import "tui-time-picker/dist/tui-time-picker.css";
 import "@toast-ui/calendar/dist/toastui-calendar.min.css";
-import { useGetSchedules } from "../../../queries/schedule/schedule.query";
 import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
 import { HomeScheduleContainer } from "./style";
+import useHomeSchedule from "../../../hooks/homeSchedule/useHomeSchedule";
 
 const HomeSchedule = () => {
   const initialEvents = [
@@ -42,16 +42,13 @@ const HomeSchedule = () => {
     },
   ];
 
-  const { data } = useGetSchedules({ page: 1, limit: 100 });
-
-  console.log(data);
-
-  // const templateConfig: Template;
+  const { calendarRef, date, handleMonth } = useHomeSchedule();
 
   return (
     <HomeScheduleContainer>
-      <HomeScheduleHeader />
+      <HomeScheduleHeader date={date} handleMonth={handleMonth} />
       <Calendar
+        ref={calendarRef}
         useDetailPopup
         view="month"
         month={{
