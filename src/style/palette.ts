@@ -125,6 +125,14 @@ const gray = {
   "700": "#000000",
 };
 
+const schedule = {
+  "1": "#fca800", //1학년
+  "2": "#3dbde5", //2학년
+  "3": "#a252e1", //3학년
+  "4": "#f97e6d", //전교생
+  "5": "#0067bc", //기타
+};
+
 export const palette = {
   red,
   orange,
@@ -137,4 +145,5 @@ export const palette = {
   indigo,
   gray,
   main: "#ff585a",
+  schedule,
 };

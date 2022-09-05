@@ -3,17 +3,16 @@ import { palette } from "../../../style/palette";
 
 export const HomeScheduleContainer = styled.div`
   width: 100%;
-  height: 780px;
+  height: 100%;
   margin-left: auto;
   border: 1px solid ${({ theme }) => theme.borderColor};
   background-color: ${({ theme }) => theme.backgroundColor};
   margin-top: auto;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   overflow: hidden;
+  box-sizing: border-box;
 
   .container {
-    height: 720px !important;
+    height: 743px !important;
   }
 
   .toastui-calendar-layout {
@@ -29,12 +28,8 @@ export const HomeScheduleContainer = styled.div`
   }
 
   .toastui-calendar-layout .toastui-calendar-month {
-    background-color: ${({ theme }) => theme.backgroundColor2} !important;
+    background-color: ${({ theme }) => theme.backgroundColor3} !important;
   }
-
-  /* .toastui-calendar-month-daygrid {
-    background-color: ${({ theme }) => theme.backgroundColor2} !important;
-  } */
 
   .toastui-calendar-weekday-grid {
     border-top: 1px solid ${({ theme }) => theme.borderColor} !important;
@@ -52,5 +47,13 @@ export const HomeScheduleContainer = styled.div`
     .toastui-calendar-weekday-grid-date.toastui-calendar-weekday-grid-date-decorator {
     background-color: ${palette.main} !important;
     color: white;
+  }
+
+  .toastui-calendar-weekday-event {
+    color: ${({ theme }) => theme.contrast} !important;
+  }
+
+  .toastui-calendar-weekday-event-title {
+    color: ${({ theme }) => theme.contrast} !important;
   }
 `;
