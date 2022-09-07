@@ -1,4 +1,4 @@
-import HomeSchedule from "./HomeSchedule/HomeSchedule";
+import HomeSchedule from "./homeSchedule/HomeSchedule";
 import HomeScheduleSideBar from "./HomeScheduleSideBar/HomeScheduleSideBar";
 import { HomeContainer } from "./style";
 

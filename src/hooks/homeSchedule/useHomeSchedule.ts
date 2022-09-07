@@ -3,11 +3,13 @@ import { useGetSchedulesByDate } from "../../queries/schedule/schedule.query";
 import dateTransform from "../../util/transform/dateTransform";
 import dayjs from "dayjs";
 import ToastUIReactCalendar from "@toast-ui/react-calendar/*";
+import dataTransform from "../../util/transform/dataTransform";
 
 const useHomeSchedule = () => {
   const calendarRef = createRef<ToastUIReactCalendar>();
 
   const [date, setDate] = useState(`${dateTransform.hyphen().slice(0, 8)}01`);
+  const [handleSchedule, setHandleSchedule] = useState<any[]>([]);
 
   const schedules = useGetSchedulesByDate({
     startDate: date,
@@ -46,7 +48,27 @@ const useHomeSchedule = () => {
   );
 
   useEffect(() => {
-    console.log(schedules);
+    setHandleSchedule([]);
+    if (schedules) {
+      schedules.forEach((schedule) =>
+        setHandleSchedule((prev) => {
+          const newHandleSchedule = {
+            id: schedule.id,
+            title: schedule.name,
+            attendees: schedule.target,
+            isReadOnly: true,
+            borderColor: dataTransform.scheduleTargetTransform(schedule.target),
+            backgroundColor: dataTransform.scheduleTargetTransform(
+              schedule.target
+            ),
+            start: schedule.startDate,
+            end: schedule.endDate,
+          };
+
+          return [...prev, newHandleSchedule];
+        })
+      );
+    }
   }, [schedules]);
 
   return {
@@ -54,6 +76,7 @@ const useHomeSchedule = () => {
     calendarRef,
     schedules,
     handleMonth,
+    handleSchedule,
   };
 };
 

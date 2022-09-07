@@ -11,7 +11,7 @@ export const dodamV6Axios = axios.create({
   baseURL: config.SERVER,
   headers: {
     "Access-Control-Allow-Origin": "*",
-    [REQUEST_TOKEN_KEY]: token.getToken(ACCESS_TOKEN_KEY)!,
+    [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)!}`,
   },
 });
 
