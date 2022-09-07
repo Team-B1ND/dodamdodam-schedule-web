@@ -9,6 +9,45 @@ import { HomeScheduleContainer } from "./style";
 const HomeSchedule = () => {
   const { handleSchedule, calendarRef, date, handleMonth } = useHomeSchedule();
 
+  const initialEvents = [
+    {
+      id: "1",
+      title: "Lunch",
+      category: "time",
+      start: "2022-09-10T12:00:00",
+      end: "2022-09-12T13:30:00",
+      target: "1학년",
+      isReadOnly: true,
+      backgroundColor: "#f97e6d",
+      borderColor: "#f97e6d",
+      location: "asdad",
+    },
+    {
+      id: "2",
+      title: "Coffee Break",
+      category: "time",
+      start: "2022-09-10T15:00:00",
+      end: "2022-09-10T15:30:00",
+      target: "1학년",
+    },
+    {
+      id: "3",
+      title: "Coffee Break",
+      category: "time",
+      start: "2022-09-21T15:00:00",
+      end: "2022-09-23T15:30:00",
+      target: "1학년",
+    },
+    {
+      id: "4",
+      title: "Coffee Break",
+      category: "time",
+      start: "2022-09-22T15:00:00",
+      end: "2022-09-30T15:30:00",
+      target: "1학년",
+    },
+  ];
+
   return (
     <HomeScheduleContainer>
       <HomeScheduleHeader date={date} handleMonth={handleMonth} />

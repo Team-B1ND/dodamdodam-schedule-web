@@ -52,15 +52,20 @@ const useHomeSchedule = () => {
     if (schedules) {
       schedules.forEach((schedule) =>
         setHandleSchedule((prev) => {
+          const scheduleColor = dataTransform.scheduleTargetTransform(
+            schedule.target
+          );
+
           const newHandleSchedule = {
             id: schedule.id,
             title: schedule.name,
-            attendees: schedule.target,
+            target: schedule.target,
+            attendees: [schedule.target],
+            location: schedule.place || "장소 없음",
+            category: "time",
             isReadOnly: true,
-            borderColor: dataTransform.scheduleTargetTransform(schedule.target),
-            backgroundColor: dataTransform.scheduleTargetTransform(
-              schedule.target
-            ),
+            borderColor: scheduleColor,
+            backgroundColor: scheduleColor,
             start: schedule.startDate,
             end: schedule.endDate,
           };
