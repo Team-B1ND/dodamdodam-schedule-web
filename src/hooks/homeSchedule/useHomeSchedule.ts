@@ -38,7 +38,7 @@ const useHomeSchedule = () => {
 
   const handleMonth = useCallback(
     (scope: "next" | "prev" | "today") => {
-      if (calendarRef && calendarRef.current) {
+      if (calendarRef.current) {
         if (scope === "next") nextMonth();
         else if (scope === "prev") prevMonth();
         else if (scope === "today") todayMonth();
