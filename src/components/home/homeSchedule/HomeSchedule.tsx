@@ -2,13 +2,24 @@ import Calendar from "@toast-ui/react-calendar";
 import "tui-date-picker/dist/tui-date-picker.css";
 import "tui-time-picker/dist/tui-time-picker.css";
 import "@toast-ui/calendar/dist/toastui-calendar.min.css";
-import useHomeSchedule from "../../../hooks/homeSchedule/useHomeSchedule";
 import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
 import { HomeScheduleContainer } from "./style";
+import ToastUIReactCalendar from "@toast-ui/react-calendar";
+import { RefObject } from "react";
 
-const HomeSchedule = () => {
-  const { handleSchedule, calendarRef, date, handleMonth } = useHomeSchedule();
+interface Props {
+  calendarRef: RefObject<ToastUIReactCalendar>;
+  date: string;
+  handleMonth: (scope: "next" | "prev" | "today") => void;
+  handleSchedule: any[];
+}
 
+const HomeSchedule = ({
+  calendarRef,
+  date,
+  handleMonth,
+  handleSchedule,
+}: Props) => {
   const initialEvents = [
     {
       id: "1",
