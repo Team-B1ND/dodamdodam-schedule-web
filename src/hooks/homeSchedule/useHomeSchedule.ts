@@ -4,20 +4,24 @@ import dayjs from "dayjs";
 import dataTransform from "../../util/transform/dataTransform";
 import { useRecoilValue } from "recoil";
 import { scheduleDateAtom } from "../../store/schedule/schedule.store";
+import { Schedule } from "../../types/schedule/schedule.type";
 
 const useHomeSchedule = () => {
   const date = useRecoilValue(scheduleDateAtom);
   const [handleSchedule, setHandleSchedule] = useState<any[]>([]);
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
 
-  const schedules = useGetSchedulesByDate({
+  const { data, isLoading } = useGetSchedulesByDate({
     startDate: date,
     endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
-  }).data?.data;
+  });
 
   useEffect(() => {
     setHandleSchedule([]);
-    if (schedules) {
-      schedules.forEach((schedule) =>
+    setSchedules([]);
+
+    if (data?.data && !isLoading) {
+      data.data.forEach((schedule) =>
         setHandleSchedule((prev) => {
           const scheduleColor = dataTransform.scheduleTargetTransform(
             schedule.target
@@ -40,8 +44,9 @@ const useHomeSchedule = () => {
           return [...prev, newHandleSchedule];
         })
       );
+      setSchedules(data.data);
     }
-  }, [schedules]);
+  }, [data, isLoading]);
 
   return {
     schedules,

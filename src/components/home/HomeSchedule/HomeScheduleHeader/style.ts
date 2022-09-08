@@ -52,8 +52,8 @@ export const HomeScheduleHeaderArrowButton = styled.button`
 `;
 
 export const HomeScheduleHeaderDate = styled.span`
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 15px;
+  line-height: 15px;
   vertical-align: middle;
   color: ${({ theme }) => theme.contrast};
   margin-left: 15px;

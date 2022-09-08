@@ -6,11 +6,11 @@ import { HomeContainer } from "./style";
 
 const Home = () => {
   const { calendarRef, handleMonth, date } = useHandleHomeSchedule();
-  const { handleSchedule } = useHomeSchedule();
+  const { schedules, handleSchedule } = useHomeSchedule();
 
   return (
     <HomeContainer>
-      <HomeScheduleSideBar />
+      <HomeScheduleSideBar date={date} schedules={schedules} />
       <HomeSchedule
         calendarRef={calendarRef}
         handleMonth={handleMonth}

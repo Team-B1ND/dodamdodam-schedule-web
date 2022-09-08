@@ -6,7 +6,7 @@ export const lightTheme: DefaultTheme = {
   backgroundColor: "#ffffff",
   backgroundColor2: "#fafafc",
   backgroundColor3: "#fafafc",
-  backgroundColor4: "ffffff",
+  backgroundColor4: "#ffffff",
   backgroundPointColor: "#f1edf4",
   borderColor: "#f0eff2",
   darkmodeButtonColor: "#efefef",
