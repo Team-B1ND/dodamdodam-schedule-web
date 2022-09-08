@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import DarkmodeButton from "../DarkmodeButton/DarkmodeButton";
 import NavBar from "../NavBar/NavBar";
 import { PageTemplateContainer } from "./style";
 
@@ -11,6 +12,7 @@ const PageTemplagte = ({ children }: Props) => {
     <PageTemplateContainer>
       <NavBar />
       {children}
+      <DarkmodeButton />
     </PageTemplateContainer>
   );
 };
