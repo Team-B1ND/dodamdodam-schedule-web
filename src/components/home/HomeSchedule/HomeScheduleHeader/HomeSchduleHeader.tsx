@@ -10,6 +10,7 @@ import { RiArrowLeftSLine } from "@react-icons/all-files/ri/RiArrowLeftSLine";
 import { RiArrowRightSLine } from "@react-icons/all-files/ri/RiArrowRightSLine";
 import { HOME_SCHEDULE_HEADER_COLORSET_LIST } from "../../../../constants/homeSchedule/homeSchedule.constant";
 import HomeScheduleHeaderColorSetItem from "./HomeScheduleHeaderColorSetItem/HomeScheduleHeaderColorSetItem";
+import React from "react";
 
 interface Props {
   date: string;
@@ -40,4 +41,4 @@ const HomeScheduleHeader = ({ date, handleMonth }: Props) => {
   );
 };
 
-export default HomeScheduleHeader;
+export default React.memo(HomeScheduleHeader);

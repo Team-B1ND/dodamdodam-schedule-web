@@ -2,52 +2,24 @@ import Calendar from "@toast-ui/react-calendar";
 import "tui-date-picker/dist/tui-date-picker.css";
 import "tui-time-picker/dist/tui-time-picker.css";
 import "@toast-ui/calendar/dist/toastui-calendar.min.css";
-import useHomeSchedule from "../../../hooks/homeSchedule/useHomeSchedule";
-import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
 import { HomeScheduleContainer } from "./style";
+import ToastUIReactCalendar from "@toast-ui/react-calendar";
+import React, { RefObject } from "react";
+import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
 
-const HomeSchedule = () => {
-  const { handleSchedule, calendarRef, date, handleMonth } = useHomeSchedule();
+interface Props {
+  calendarRef: RefObject<ToastUIReactCalendar>;
+  date: string;
+  handleMonth: (scope: "next" | "prev" | "today") => void;
+  handleSchedule: any[];
+}
 
-  const initialEvents = [
-    {
-      id: "1",
-      title: "Lunch",
-      category: "time",
-      start: "2022-09-10T12:00:00",
-      end: "2022-09-12T13:30:00",
-      target: "1학년",
-      isReadOnly: true,
-      backgroundColor: "#f97e6d",
-      borderColor: "#f97e6d",
-      location: "asdad",
-    },
-    {
-      id: "2",
-      title: "Coffee Break",
-      category: "time",
-      start: "2022-09-10T15:00:00",
-      end: "2022-09-10T15:30:00",
-      target: "1학년",
-    },
-    {
-      id: "3",
-      title: "Coffee Break",
-      category: "time",
-      start: "2022-09-21T15:00:00",
-      end: "2022-09-23T15:30:00",
-      target: "1학년",
-    },
-    {
-      id: "4",
-      title: "Coffee Break",
-      category: "time",
-      start: "2022-09-22T15:00:00",
-      end: "2022-09-30T15:30:00",
-      target: "1학년",
-    },
-  ];
-
+const HomeSchedule = ({
+  calendarRef,
+  date,
+  handleMonth,
+  handleSchedule,
+}: Props) => {
   return (
     <HomeScheduleContainer>
       <HomeScheduleHeader date={date} handleMonth={handleMonth} />
@@ -75,4 +47,4 @@ const HomeSchedule = () => {
   );
 };
 
-export default HomeSchedule;
+export default React.memo(HomeSchedule);

@@ -3,6 +3,7 @@ import reset from "styled-reset";
 import "./font.css";
 
 const GlobalStyle = createGlobalStyle`
+
     ${reset}
 `;
 
