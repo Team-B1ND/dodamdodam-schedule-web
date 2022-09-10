@@ -1,3 +1,4 @@
+import React from "react";
 import { Schedule } from "../../../types/schedule/schedule.type";
 import HomeScheduleSideBarItem from "./HomeScheduleSideBarItem/HomeScheduleSideBarItem";
 import HomeScheduleSideBarHeader from "./HomeScheudleSideBarHeader/HomeScheduleSideBarHeader";
@@ -24,4 +25,4 @@ const HomeScheduleSideBar = ({ schedules, date }: Props) => {
   );
 };
 
-export default HomeScheduleSideBar;
+export default React.memo(HomeScheduleSideBar);

@@ -2,15 +2,20 @@ import styled from "styled-components";
 
 export const HomeScheduleSideBarHeaderContainer = styled.div`
   width: 100%;
-  min-height: 60px;
-  max-height: 60px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding: 10px 12px;
   box-sizing: border-box;
   font-size: 15px;
-  justify-content: space-between;
   color: ${({ theme }) => theme.contrast};
+  row-gap: 10px;
+`;
+
+export const HomeScheduleSideBarHeaderWrap = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const HomeScheduleSideBarHeaderTimeWrap = styled.div`
@@ -22,4 +27,9 @@ export const HomeScheduleSideBarHeaderTimeWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const HomeScheduleSideBarHeaderClassificationText = styled.span`
+  margin-left: 10px;
+  font-weight: bold;
 `;

@@ -1,7 +1,7 @@
-import useHandleHomeSchedule from "../../hooks/homeSchedule/useHandleHomeSchedule";
-import useHomeSchedule from "../../hooks/homeSchedule/useHomeSchedule";
-import HomeSchedule from "./homeSchedule/HomeSchedule";
-import HomeScheduleSideBar from "./homeScheduleSideBar/HomeScheduleSideBar";
+import useHandleHomeSchedule from "../../hooks/home/useHandleHomeSchedule";
+import useHomeSchedule from "../../hooks/home/useHomeSchedule";
+import HomeSchedule from "./HomeSchedule/HomeSchedule";
+import HomeScheduleSideBar from "./HomeScheduleSideBar/HomeScheduleSideBar";
 import { HomeContainer } from "./style";
 
 const Home = () => {
