@@ -18,7 +18,10 @@ const HomeScheduleSideBar = ({ schedules, date }: Props) => {
       <HomeScheduleSideBarHeader date={date} />
       <HomeScheduleSideBarItemWrap>
         {schedules.map((schedule) => (
-          <HomeScheduleSideBarItem schedule={schedule} />
+          <HomeScheduleSideBarItem
+            schedule={schedule}
+            key={`${schedule.startDate}~${schedule.endDate} ${schedule.target} ${schedule.name}`}
+          />
         ))}
       </HomeScheduleSideBarItemWrap>
     </HomeScheduleSideBarContainer>

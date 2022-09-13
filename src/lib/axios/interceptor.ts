@@ -14,7 +14,7 @@ export const customAxiosInterceptor = async (
   const decodeToken = token.decodeToken(ACCESS_TOKEN_KEY);
   const currentTime = Date.now() / 1000;
 
-  if (decodeToken?.exp! < currentTime && refreshToken) {
+  if (refreshToken && decodeToken?.exp! < currentTime) {
     try {
       const { data: newAccessToken } = await tokenRepository.postRefreshToken({
         token: refreshToken,

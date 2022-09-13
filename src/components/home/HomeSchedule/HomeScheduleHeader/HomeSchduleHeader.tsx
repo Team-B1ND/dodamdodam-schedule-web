@@ -34,7 +34,10 @@ const HomeScheduleHeader = ({ date, handleMonth }: Props) => {
       <HomeScheduleHeaderDate>{date.slice(0, 7)}</HomeScheduleHeaderDate>
       <HomeScheduleHeaderColorSetWrap>
         {HOME_SCHEDULE_HEADER_COLORSET_LIST.map((colorSet) => (
-          <HomeScheduleHeaderColorSetItem {...colorSet} />
+          <HomeScheduleHeaderColorSetItem
+            {...colorSet}
+            key={`HomeScheduleHeaderColorSetItem ${colorSet.backgroundColor}`}
+          />
         ))}
       </HomeScheduleHeaderColorSetWrap>
     </HomeScheduleHeaderContainer>

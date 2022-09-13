@@ -9,6 +9,11 @@ import {
 } from "../../store/schedule/schedule.store";
 import { Schedule } from "../../types/schedule/schedule.type";
 import { useGetMember } from "../../queries/member/member.query";
+import token from "../../lib/token/token";
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+} from "../../constants/token/token.constant";
 
 const useHomeSchedule = () => {
   const date = useRecoilValue(scheduleDateAtom);
@@ -22,6 +27,16 @@ const useHomeSchedule = () => {
     startDate: date,
     endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
   });
+
+  useEffect(() => {
+    if (
+      !token.getToken(ACCESS_TOKEN_KEY) ||
+      !token.getToken(REFRESH_TOKEN_KEY)
+    ) {
+      window.alert("토큰이 위조 됐습니다");
+      window.location.href = "http://dodam.b1nd.com/sign";
+    }
+  }, []);
 
   useEffect(() => {
     setHandleSchedule([]);
@@ -65,22 +80,24 @@ const useHomeSchedule = () => {
     );
   }, [memberData?.data.classroom.grade, schedulesData?.data]);
 
-  const handleSchedules = useCallback(
-    (classificationKeyword: string) => {
-      if (classificationKeyword === "전체 일정") {
-        setSchedules(schedulesData!.data);
-      } else if (classificationKeyword === "내 일정") {
-        loadMyGradeSchedule();
-      }
-    },
-    [schedulesData, loadMyGradeSchedule]
-  );
+  const handleSchedules = useCallback(() => {
+    setSchedules([]);
+    if (classificationKeyword === "전체 일정") {
+      setSchedules(schedulesData!.data);
+    } else if (classificationKeyword === "내 일정") {
+      loadMyGradeSchedule();
+    }
+  }, [schedulesData, loadMyGradeSchedule, classificationKeyword]);
 
   useEffect(() => {
     if (schedulesData?.data && !isLoading) {
-      handleSchedules(classificationKeyword);
+      handleSchedules();
     }
-  }, [classificationKeyword, schedulesData?.data, isLoading, handleSchedules]);
+  }, [schedulesData?.data, isLoading, handleSchedules]);
+
+  useEffect(() => {
+    console.log(schedules);
+  }, [schedules]);
 
   return {
     schedules,
