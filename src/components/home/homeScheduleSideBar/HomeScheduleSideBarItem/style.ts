@@ -18,6 +18,7 @@ export const HomeScheduleSideBarItemContainer = styled.div`
 
 export const HomeScheduleSideBarItemTitleWrap = styled.div`
   display: flex;
+  align-items: center;
   column-gap: 5px;
 `;
 
@@ -35,24 +36,21 @@ export const HomeScheduleSideBarItemDate = styled.span`
   font-size: 14px;
 `;
 
-export const HomeScheduleSideBarItemTargetWrap = styled.div`
-  display: flex;
-  align-items: center;
-  column-gap: 2px;
-`;
-
-export const HomeScheduleSideBarItemTargetCircle = styled.span<{
+export const HomeScheduleSideBarItemTargetWrap = styled.div<{
   backgroundColor: string;
 }>`
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
+  width: 46px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 2px;
   background-color: ${({ backgroundColor }) => backgroundColor};
+  border-radius: 10px;
+  padding-top: 2.5px;
 `;
 
 export const HomeScheduleSideBarItemTargetText = styled.p`
-  font-size: 13px;
-  color: ${({ theme }) => theme.contrast};
-  line-height: 13px;
-  vertical-align: middle;
+  font-size: 11px;
+  color: white;
 `;

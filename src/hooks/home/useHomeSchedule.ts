@@ -61,6 +61,7 @@ const useHomeSchedule = () => {
             backgroundColor: scheduleColor,
             start: schedule.startDate,
             end: schedule.endDate,
+            state: null,
           };
 
           return [...prev, newHandleSchedule];

@@ -41,7 +41,6 @@ const HomeSchedule = ({
         }}
         isReadOnly
         events={handleSchedule}
-        // template
       />
     </HomeScheduleContainer>
   );

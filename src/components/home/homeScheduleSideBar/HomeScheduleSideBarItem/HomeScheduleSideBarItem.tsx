@@ -7,7 +7,6 @@ import {
   HomeScheduleSideBarItemDate,
   HomeScheduleSideBarItemTitleWrap,
   HomeScheduleSideBarItemTargetWrap,
-  HomeScheduleSideBarItemTargetCircle,
   HomeScheduleSideBarItemTargetText,
 } from "./style";
 
@@ -22,12 +21,11 @@ const HomeScheduleSideBarItem = ({ schedule }: Props) => {
         <HomeScheduleSideBarItemTitle>
           {schedule.name}
         </HomeScheduleSideBarItemTitle>
-        <HomeScheduleSideBarItemTargetWrap>
-          <HomeScheduleSideBarItemTargetCircle
-            backgroundColor={dataTransform.scheduleTargetTransform(
-              schedule.target
-            )}
-          />
+        <HomeScheduleSideBarItemTargetWrap
+          backgroundColor={dataTransform.scheduleTargetTransform(
+            schedule.target
+          )}
+        >
           <HomeScheduleSideBarItemTargetText>
             {schedule.target}
           </HomeScheduleSideBarItemTargetText>
