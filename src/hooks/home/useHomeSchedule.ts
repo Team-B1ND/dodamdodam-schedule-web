@@ -14,6 +14,7 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
 } from "../../constants/token/token.constant";
+import { usePostModuleLog } from "../../queries/log/log.query";
 
 const useHomeSchedule = () => {
   const date = useRecoilValue(scheduleDateAtom);
@@ -28,6 +29,89 @@ const useHomeSchedule = () => {
     endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
   });
 
+  const postModuleLogMutation = usePostModuleLog();
+
+  const loadCalendarSchedule = useCallback(() => {
+    schedulesData!.data.forEach((schedule) =>
+      setHandleSchedule((prev) => {
+        const newHandleCalendarSchedule = calendarScheduleTransform(schedule);
+        return [...prev, newHandleCalendarSchedule];
+      })
+    );
+  }, [schedulesData]);
+
+  const calendarScheduleTransform = (schedule: Schedule) => {
+    const scheduleColor = dataTransform.scheduleTargetTransform(
+      schedule.target
+    );
+
+    const newHandleSchedule = {
+      id: schedule.id,
+      title: schedule.name,
+      target: schedule.target,
+      attendees: [schedule.target],
+      location: schedule.place || "장소 없음",
+      category: "time",
+      isReadOnly: true,
+      borderColor: scheduleColor,
+      backgroundColor: scheduleColor,
+      start: schedule.startDate,
+      end: schedule.endDate,
+      state: null,
+    };
+
+    return newHandleSchedule;
+  };
+
+  const loadMyGradeSchedules = () => {
+    setSchedules(
+      schedulesData?.data.filter(
+        (scheudle) =>
+          scheudle.target.indexOf(String(memberData?.data.classroom.grade)) >
+            -1 || scheudle.target === "전교생"
+      )!
+    );
+    postModuleLogMutation.mutate({
+      moduleName: "일정/내일정 조회",
+      description: "내일정 조회",
+    });
+  };
+
+  const loadAllSchedules = () => {
+    setSchedules(schedulesData!.data);
+    postModuleLogMutation.mutate({
+      moduleName: "일정/전체일정 조회",
+      description: "전체일정 조회",
+    });
+  };
+
+  const handleSchedules = (scope: string) => {
+    setSchedules([]);
+
+    switch (scope) {
+      case "전체 일정":
+        loadAllSchedules();
+        break;
+
+      case "내 일정":
+        loadMyGradeSchedules();
+        break;
+
+      default:
+        loadAllSchedules();
+        break;
+    }
+  };
+
+  useEffect(() => {
+    setHandleSchedule([]);
+    setSchedules([]);
+
+    if (schedulesData?.data && !isLoading) {
+      loadCalendarSchedule();
+    }
+  }, [schedulesData?.data, isLoading, loadCalendarSchedule]);
+
   useEffect(() => {
     if (
       !token.getToken(ACCESS_TOKEN_KEY) ||
@@ -39,66 +123,10 @@ const useHomeSchedule = () => {
   }, []);
 
   useEffect(() => {
-    setHandleSchedule([]);
-    setSchedules([]);
-
     if (schedulesData?.data && !isLoading) {
-      schedulesData.data.forEach((schedule) =>
-        setHandleSchedule((prev) => {
-          const scheduleColor = dataTransform.scheduleTargetTransform(
-            schedule.target
-          );
-
-          const newHandleSchedule = {
-            id: schedule.id,
-            title: schedule.name,
-            target: schedule.target,
-            attendees: [schedule.target],
-            location: schedule.place || "장소 없음",
-            category: "time",
-            isReadOnly: true,
-            borderColor: scheduleColor,
-            backgroundColor: scheduleColor,
-            start: schedule.startDate,
-            end: schedule.endDate,
-            state: null,
-          };
-
-          return [...prev, newHandleSchedule];
-        })
-      );
-      setSchedules(schedulesData.data);
+      handleSchedules(classificationKeyword);
     }
-  }, [schedulesData?.data, isLoading]);
-
-  const loadMyGradeSchedule = useCallback(() => {
-    setSchedules(
-      schedulesData?.data.filter(
-        (scheudle) =>
-          scheudle.target.indexOf(String(memberData?.data.classroom.grade)) >
-            -1 || scheudle.target === "전교생"
-      )!
-    );
-  }, [memberData?.data.classroom.grade, schedulesData?.data]);
-
-  const handleSchedules = useCallback(() => {
-    setSchedules([]);
-    if (classificationKeyword === "전체 일정") {
-      setSchedules(schedulesData!.data);
-    } else if (classificationKeyword === "내 일정") {
-      loadMyGradeSchedule();
-    }
-  }, [schedulesData, loadMyGradeSchedule, classificationKeyword]);
-
-  useEffect(() => {
-    if (schedulesData?.data && !isLoading) {
-      handleSchedules();
-    }
-  }, [schedulesData?.data, isLoading, handleSchedules]);
-
-  useEffect(() => {
-    console.log(schedules);
-  }, [schedules]);
+  }, [schedulesData?.data, isLoading, classificationKeyword]);
 
   return {
     schedules,
