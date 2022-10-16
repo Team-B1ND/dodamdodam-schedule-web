@@ -2,6 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
+  REQUEST_TOKEN_KEY,
 } from "../../constants/token/token.constant";
 import tokenRepository from "../../repository/token/token.repository";
 import token from "../token/token";
@@ -20,8 +21,8 @@ export const customAxiosInterceptor = async (
         token: refreshToken,
       });
 
-      config.headers![REFRESH_TOKEN_KEY] = newAccessToken;
-      dodamV6Axios.defaults.headers.common[REFRESH_TOKEN_KEY] = newAccessToken;
+      config.headers![REQUEST_TOKEN_KEY] = newAccessToken;
+      dodamV6Axios.defaults.headers.common[REQUEST_TOKEN_KEY] = newAccessToken;
       token.setToken(ACCESS_TOKEN_KEY, newAccessToken);
     } catch (error) {
       window.alert("세션이 만료되었습니다");
