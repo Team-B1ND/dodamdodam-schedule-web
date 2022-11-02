@@ -10,9 +10,11 @@ export const HomeScheduleContainer = styled.div`
   margin-top: auto;
   overflow: hidden;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   .container {
-    height: 743px !important;
+    height: 100% !important;
   }
 
   .toastui-calendar-layout {
@@ -50,10 +52,6 @@ export const HomeScheduleContainer = styled.div`
   }
 
   .toastui-calendar-weekday-event {
-    color: ${({ theme }) => theme.contrast} !important;
-  }
-
-  .toastui-calendar-weekday-event-title {
-    color: ${({ theme }) => theme.contrast} !important;
+    color: white !important;
   }
 `;

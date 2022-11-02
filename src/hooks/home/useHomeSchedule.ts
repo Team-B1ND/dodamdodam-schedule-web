@@ -32,13 +32,23 @@ const useHomeSchedule = () => {
   const postModuleLogMutation = usePostModuleLog();
 
   const loadCalendarSchedule = useCallback(() => {
-    schedulesData!.data.forEach((schedule) =>
+    let newSchedulesData = schedulesData!.data;
+
+    if (classificationKeyword === "내 일정") {
+      newSchedulesData = newSchedulesData.filter(
+        (schedule) =>
+          schedule.target.indexOf(String(memberData?.data.classroom.grade)) >
+            -1 || schedule.target === "전교생"
+      );
+    }
+
+    newSchedulesData!.forEach((schedule) =>
       setHandleSchedule((prev) => {
         const newHandleCalendarSchedule = calendarScheduleTransform(schedule);
         return [...prev, newHandleCalendarSchedule];
       })
     );
-  }, [schedulesData]);
+  }, [classificationKeyword, memberData?.data.classroom.grade, schedulesData]);
 
   const calendarScheduleTransform = (schedule: Schedule) => {
     const scheduleColor = dataTransform.scheduleTargetTransform(
@@ -66,9 +76,9 @@ const useHomeSchedule = () => {
   const loadMyGradeSchedules = () => {
     setSchedules(
       schedulesData?.data.filter(
-        (scheudle) =>
-          scheudle.target.indexOf(String(memberData?.data.classroom.grade)) >
-            -1 || scheudle.target === "전교생"
+        (schedule) =>
+          schedule.target.indexOf(String(memberData?.data.classroom.grade)) >
+            -1 || schedule.target === "전교생"
       )!
     );
     postModuleLogMutation.mutate({
@@ -105,7 +115,6 @@ const useHomeSchedule = () => {
 
   useEffect(() => {
     setHandleSchedule([]);
-    setSchedules([]);
 
     if (schedulesData?.data && !isLoading) {
       loadCalendarSchedule();
