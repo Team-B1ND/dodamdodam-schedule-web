@@ -14,4 +14,5 @@ export const NavBarContainer = styled.div`
 export const NavBarLogo = styled.img`
   width: 30px;
   object-fit: scale-down;
+  cursor: pointer;
 `;
