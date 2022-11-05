@@ -54,4 +54,8 @@ export const HomeScheduleContainer = styled.div`
   .toastui-calendar-weekday-event {
     color: white !important;
   }
+
+  .toastui-calendar-weekday-event-dot + .toastui-calendar-weekday-event-title {
+    color: ${({ theme }) => theme.contrast};
+  }
 `;
