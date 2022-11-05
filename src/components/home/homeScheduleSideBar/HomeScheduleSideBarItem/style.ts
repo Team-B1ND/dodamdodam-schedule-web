@@ -47,7 +47,6 @@ export const HomeScheduleSideBarItemTargetWrap = styled.div<{
   column-gap: 2px;
   background-color: ${({ backgroundColor }) => backgroundColor};
   border-radius: 10px;
-  padding-top: 2.5px;
 `;
 
 export const HomeScheduleSideBarItemTargetText = styled.p`
