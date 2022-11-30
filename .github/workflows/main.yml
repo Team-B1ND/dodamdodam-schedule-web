@@ -12,10 +12,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 🧩 Install Modules
-        run: npm install --legacy-peer-deps
+        run: |
+          npm install --legacy-peer-deps
+          npm install -g yarn
 
       - name: 👷‍♂️ Build Project
-        run: npm run build
+        run: yarn build
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
