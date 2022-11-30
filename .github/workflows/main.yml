@@ -11,10 +11,11 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      - name: 🔨 Build Project
-        run: |
-          npm install --legacy-peer-deps
-          npm run build
+      - name: 🧩 Install Modules
+        run: npm install --legacy-peer-deps
+
+      - name: 👷‍♂️ Build Project
+        run: npm run build
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
