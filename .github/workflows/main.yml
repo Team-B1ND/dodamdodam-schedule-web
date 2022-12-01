@@ -29,9 +29,11 @@ jobs:
           CI: false
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@3.1.1
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          ftp-server: ${{ secrets.DODAM_FILEZILLA_IP }}
-          ftp-username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
-          ftp-password: ${{ secrets.DODAM_FILEZILLA_PWD }}
+          server: ${{ secrets.DODAM_FILEZILLA_IP }}
+          username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
+          password: ${{ secrets.DODAM_FILEZILLA_PWD }}
           local-dir: ./build/
+          port: 2021
+          protocol: ftps
