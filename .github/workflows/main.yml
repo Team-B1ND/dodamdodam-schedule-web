@@ -30,9 +30,7 @@ jobs:
 
       - name: 👷‍♂️ Build Project
         run: yarn build
-          env:  
-            CI: ""
-
+      
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
