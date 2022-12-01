@@ -28,4 +28,4 @@ jobs:
           username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
           password: ${{ secrets.DODAM_FILEZILLA_PWD }}
           post: 2021
-          local-dir: ./build
+          local-dir: /build
