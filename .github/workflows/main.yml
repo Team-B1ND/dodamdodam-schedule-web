@@ -11,10 +11,17 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
       - name: 🧩 Install Modules
-        run: |
-          npm install --legacy-peer-deps
-          npm install -g yarn
+        run: yarn
 
       - name: 👷‍♂️ Build Project
         run: yarn build
@@ -22,10 +29,10 @@ jobs:
           CI: false
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
-          server: ${{ secrets.DODAM_FILEZILLA_IP }}
-          username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
-          password: ${{ secrets.DODAM_FILEZILLA_PWD }}
+          ftp-server: ${{ secrets.DODAM_FILEZILLA_IP }}
+          ftp-username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
+          ftp-password: ${{ secrets.DODAM_FILEZILLA_PWD }}
           port: 2021
           local-dir: ./build/
