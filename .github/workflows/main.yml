@@ -22,8 +22,8 @@ jobs:
           CI: false
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        uses: genietim/ftp-action@releases/v4
         with:
-          server: ${{ secrets.DODAM_FILEZILLA_IP }}
+          host: ${{ secrets.DODAM_FILEZILLA_IP }}
           username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
           password: ${{ secrets.DODAM_FILEZILLA_PWD }}
