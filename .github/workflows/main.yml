@@ -4,7 +4,7 @@ on:
       - master
 name: Production Deployment
 jobs:
-  web-deploy:
+  deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
