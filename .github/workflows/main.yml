@@ -34,5 +34,4 @@ jobs:
           ftp-server: ${{ secrets.DODAM_FILEZILLA_IP }}
           ftp-username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
           ftp-password: ${{ secrets.DODAM_FILEZILLA_PWD }}
-          port: 2021
           local-dir: ./build/
