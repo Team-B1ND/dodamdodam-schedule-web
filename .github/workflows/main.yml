@@ -27,5 +27,5 @@ jobs:
           server: ${{ secrets.DODAM_FILEZILLA_IP }}
           username: ${{ secrets.DODAM_FILEZILLA_USERNAME }}
           password: ${{ secrets.DODAM_FILEZILLA_PWD }}
-          post: 2021
+          port: 2021
           local-dir: ./build/
