@@ -29,6 +29,10 @@ const useHomeSchedule = () => {
     endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
   });
 
+  useEffect(() => {
+    console.log(handleSchedule);
+  }, [handleSchedule]);
+
   const postModuleLogMutation = usePostModuleLog();
 
   const loadCalendarSchedule = useCallback(() => {
