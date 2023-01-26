@@ -34,6 +34,7 @@ export const useGetSchedulesByDate = ({
     ["schedule/getSchedulesByDate", `${startDate}~${endDate}`],
     () => scheduleRepository.getSchedulesByDate({ startDate, endDate }),
     {
+      suspense: true,
       enabled: !!startDate && !!endDate,
       staleTime: 1000 * 60,
       cacheTime: 1000 * 60 * 60,
