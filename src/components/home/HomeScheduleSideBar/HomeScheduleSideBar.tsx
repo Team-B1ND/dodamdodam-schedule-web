@@ -1,28 +1,29 @@
-import React from "react";
-import { Schedule } from "../../../types/schedule/schedule.type";
-import HomeScheduleSideBarItem from "./HomeScheduleSideBarItem/HomeScheduleSideBarItem";
+import React, { Suspense } from "react";
+import { useRecoilValue } from "recoil";
+import { scheduleDateAtom } from "../../../store/schedule/schedule.store";
+import ErrorBoundary from "../../common/\bErorrBoundary";
+import ItemMap from "../../common/Item/ItemMap";
+import Loader from "../../common/Loader";
 import HomeScheduleSideBarHeader from "./HomeScheudleSideBarHeader/HomeScheduleSideBarHeader";
 import {
   HomeScheduleSideBarContainer,
   HomeScheduleSideBarItemWrap,
 } from "./style";
 
-interface Props {
-  schedules: Schedule[];
-  date: string;
-}
+const HomeScheduleSideBar = () => {
+  const date = useRecoilValue(scheduleDateAtom);
 
-const HomeScheduleSideBar = ({ schedules, date }: Props) => {
   return (
     <HomeScheduleSideBarContainer>
       <HomeScheduleSideBarHeader date={date} />
       <HomeScheduleSideBarItemWrap>
-        {schedules.map((schedule) => (
-          <HomeScheduleSideBarItem
-            schedule={schedule}
-            key={`${schedule.startDate}~${schedule.endDate} ${schedule.target} ${schedule.name}`}
-          />
-        ))}
+        <ErrorBoundary
+          fallback={<h1 style={{ fontSize: "20px" }}>Error :( </h1>}
+        >
+          <Suspense fallback={<Loader />}>
+            <ItemMap />
+          </Suspense>
+        </ErrorBoundary>
       </HomeScheduleSideBarItemWrap>
     </HomeScheduleSideBarContainer>
   );
