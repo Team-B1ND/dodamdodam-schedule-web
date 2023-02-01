@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { useQuery, UseQueryResult } from "react-query";
+import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
 import {
   getSchedulesByDateParam,
   getSchedulesParam,
@@ -23,19 +23,21 @@ export const useGetSchedules = ({
     }
   );
 
-export const useGetSchedulesByDate = ({
-  startDate,
-  endDate,
-}: getSchedulesByDateParam): UseQueryResult<
-  SchduelsByDateResponse,
-  AxiosError
-> =>
+export const useGetSchedulesByDate = (
+  { startDate, endDate }: getSchedulesByDateParam,
+  options?: UseQueryOptions<
+    SchduelsByDateResponse,
+    AxiosError,
+    SchduelsByDateResponse,
+    ["schedule/getSchedulesByDate", string]
+  >
+): UseQueryResult<SchduelsByDateResponse, AxiosError> =>
   useQuery(
     ["schedule/getSchedulesByDate", `${startDate}~${endDate}`],
     () => scheduleRepository.getSchedulesByDate({ startDate, endDate }),
     {
-      suspense: true,
       enabled: !!startDate && !!endDate,
+      ...options,
       staleTime: 1000 * 60,
       cacheTime: 1000 * 60 * 60,
     }
