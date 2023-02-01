@@ -58,20 +58,11 @@ const useHandleHomeSchedule = () => {
     setDate(today);
   }, [calendarRef, setDate, postModuleLogMutation]);
 
-  const handleMonth = useCallback(
-    (scope: "next" | "prev" | "today") => {
-      if (calendarRef.current) {
-        if (scope === "next") nextMonth();
-        else if (scope === "prev") prevMonth();
-        else if (scope === "today") todayMonth();
-      }
-    },
-    [calendarRef, nextMonth, prevMonth, todayMonth]
-  );
-
   return {
     calendarRef,
-    handleMonth,
+    nextMonth,
+    prevMonth,
+    todayMonth,
   };
 };
 

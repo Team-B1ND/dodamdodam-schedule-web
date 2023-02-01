@@ -1,7 +1,7 @@
-import useHomeSidebarSchedule from "../../../hooks/schedule/useHomeSidebarSchedule";
-import HomeScheduleSideBarItem from "../../home/HomeScheduleSideBar/HomeScheduleSideBarItem/HomeScheduleSideBarItem";
+import useHomeSidebarSchedule from "../../../../hooks/schedule/useHomeSidebarSchedule";
+import HomeScheduleSideBarItem from "../HomeScheduleSideBarItem/HomeScheduleSideBarItem";
 
-const ItemMap = () => {
+const HomeScheduleItemMap = () => {
   const { schedules } = useHomeSidebarSchedule();
   return (
     <>
@@ -15,4 +15,4 @@ const ItemMap = () => {
   );
 };
 
-export default ItemMap;
+export default HomeScheduleItemMap;

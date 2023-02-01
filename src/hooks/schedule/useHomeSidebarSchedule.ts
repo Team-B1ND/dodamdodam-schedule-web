@@ -11,7 +11,7 @@ import {
 import { Schedule } from "../../types/schedule/schedule.type";
 
 const useHomeSidebarSchedule = () => {
-  const date = useRecoilValue(scheduleDateAtom); //01 01
+  const date = useRecoilValue(scheduleDateAtom);
   const classificationKeyword = useRecoilValue(scheduleClassificationKeyword);
   const [schedules, setSchedules] = useState<Schedule[]>([]);
 

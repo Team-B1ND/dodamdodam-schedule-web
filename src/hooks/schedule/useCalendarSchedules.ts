@@ -16,14 +16,14 @@ import {
 } from "../../constants/token/token.constant";
 
 const useCalendarSchedules = () => {
-  const date = useRecoilValue(scheduleDateAtom); //01 01
+  const date = useRecoilValue(scheduleDateAtom);
   const [handleSchedule, setHandleSchedule] = useState<any[]>([]);
   const classificationKeyword = useRecoilValue(scheduleClassificationKeyword); //전체일정, 내일정
 
   const { data: memberData } = useGetMember();
 
   const { data: schedulesData, isLoading } = useGetSchedulesByDate({
-    startDate: date, //0101
+    startDate: date,
     endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
   });
 

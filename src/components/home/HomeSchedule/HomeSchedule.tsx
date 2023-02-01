@@ -9,18 +9,22 @@ import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
 import { useRecoilValue } from "recoil";
 import { scheduleDateAtom } from "../../../store/schedule/schedule.store";
 import useCalendarSchedules from "../../../hooks/schedule/\buseCalendarSchedules";
+import useHandleHomeSchedule from "../../../hooks/schedule/useHandleHomeSchedule";
 
-interface Props {
-  calendarRef: RefObject<ToastUIReactCalendar>;
-  handleMonth: (scope: "next" | "prev" | "today") => void;
-}
-
-const HomeSchedule = ({ calendarRef, handleMonth }: Props) => {
+const HomeSchedule = () => {
   const date = useRecoilValue(scheduleDateAtom);
   const { handleSchedule } = useCalendarSchedules();
+  const { calendarRef, todayMonth, prevMonth, nextMonth } =
+    useHandleHomeSchedule();
+
   return (
     <HomeScheduleContainer>
-      <HomeScheduleHeader date={date} handleMonth={handleMonth} />
+      <HomeScheduleHeader
+        todayMonth={todayMonth}
+        prevMonth={prevMonth}
+        nextMonth={nextMonth}
+        date={date}
+      />
       <Calendar
         ref={calendarRef}
         useDetailPopup
