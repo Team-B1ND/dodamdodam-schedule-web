@@ -6,9 +6,8 @@ import { usePostModuleLog } from "../../queries/log/log.query";
 import { scheduleDateAtom } from "../../store/schedule/schedule.store";
 import dateTransform from "../../util/transform/dateTransform";
 
-const useHandleHomeSchedule = () => {
+const useCalendearMove = () => {
   const calendarRef = createRef<ToastUIReactCalendar>();
-
   const [date, setDate] = useRecoilState(scheduleDateAtom);
 
   const postModuleLogMutation = usePostModuleLog();
@@ -18,14 +17,14 @@ const useHandleHomeSchedule = () => {
     calendarInstance?.next();
 
     setDate((prev) => {
-      const nextDay = dayjs(prev).add(1, "month").format("YYYY-MM-DD");
+      const nextMonth = dayjs(prev).add(1, "month").format("YYYY-MM-DD");
 
       postModuleLogMutation.mutate({
         moduleName: "일정/일정조회",
-        description: `${nextDay} 조회`,
+        description: `${nextMonth} 조회`,
       });
 
-      return nextDay;
+      return nextMonth;
     });
   }, [calendarRef, setDate, postModuleLogMutation]);
 
@@ -34,14 +33,14 @@ const useHandleHomeSchedule = () => {
     calendarInstance?.prev();
 
     setDate((prev) => {
-      const prevDay = dayjs(prev).subtract(1, "month").format("YYYY-MM-DD");
+      const prevMonth = dayjs(prev).subtract(1, "month").format("YYYY-MM-DD"); //한 달전
 
       postModuleLogMutation.mutate({
         moduleName: "일정/일정조회",
-        description: `${prevDay} 조회`,
+        description: `${prevMonth} 조회`,
       });
 
-      return prevDay;
+      return prevMonth;
     });
   }, [calendarRef, setDate, postModuleLogMutation]);
 
@@ -59,22 +58,12 @@ const useHandleHomeSchedule = () => {
     setDate(today);
   }, [calendarRef, setDate, postModuleLogMutation]);
 
-  const handleMonth = useCallback(
-    (scope: "next" | "prev" | "today") => {
-      if (calendarRef.current) {
-        if (scope === "next") nextMonth();
-        else if (scope === "prev") prevMonth();
-        else if (scope === "today") todayMonth();
-      }
-    },
-    [calendarRef, nextMonth, prevMonth, todayMonth]
-  );
-
   return {
-    date,
     calendarRef,
-    handleMonth,
+    nextMonth,
+    prevMonth,
+    todayMonth,
   };
 };
 
-export default useHandleHomeSchedule;
+export default useCalendearMove;

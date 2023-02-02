@@ -3,26 +3,26 @@ import "tui-date-picker/dist/tui-date-picker.css";
 import "tui-time-picker/dist/tui-time-picker.css";
 import "@toast-ui/calendar/dist/toastui-calendar.min.css";
 import { HomeScheduleContainer } from "./style";
-import ToastUIReactCalendar from "@toast-ui/react-calendar";
-import React, { RefObject } from "react";
+import React from "react";
 import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
+import { useRecoilValue } from "recoil";
+import { scheduleDateAtom } from "../../../store/schedule/schedule.store";
+import useCalendarSchedules from "../../../hooks/schedule/\buseCalendarSchedules";
+import useCalendearMove from "../../../hooks/schedule/useCalendearMove";
 
-interface Props {
-  calendarRef: RefObject<ToastUIReactCalendar>;
-  date: string;
-  handleMonth: (scope: "next" | "prev" | "today") => void;
-  handleSchedule: any[];
-}
+const HomeSchedule = () => {
+  const date = useRecoilValue(scheduleDateAtom);
+  const { handleSchedule } = useCalendarSchedules();
+  const { calendarRef, todayMonth, prevMonth, nextMonth } = useCalendearMove();
 
-const HomeSchedule = ({
-  calendarRef,
-  date,
-  handleMonth,
-  handleSchedule,
-}: Props) => {
   return (
     <HomeScheduleContainer>
-      <HomeScheduleHeader date={date} handleMonth={handleMonth} />
+      <HomeScheduleHeader
+        todayMonth={todayMonth}
+        prevMonth={prevMonth}
+        nextMonth={nextMonth}
+        date={date}
+      />
       <Calendar
         ref={calendarRef}
         useDetailPopup

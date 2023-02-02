@@ -14,20 +14,27 @@ import React from "react";
 
 interface Props {
   date: string;
-  handleMonth: (scope: "next" | "prev" | "today") => void;
+  nextMonth: () => void;
+  prevMonth: () => void;
+  todayMonth: () => void;
 }
 
-const HomeScheduleHeader = ({ date, handleMonth }: Props) => {
+const HomeScheduleHeader = ({
+  date,
+  nextMonth,
+  prevMonth,
+  todayMonth,
+}: Props) => {
   return (
     <HomeScheduleHeaderContainer>
-      <HomeScheduleHeaderTodayButton onClick={() => handleMonth("today")}>
+      <HomeScheduleHeaderTodayButton onClick={todayMonth}>
         오늘
       </HomeScheduleHeaderTodayButton>
       <HomeScheduleHeaderArrowButtonWrap>
-        <HomeScheduleHeaderArrowButton onClick={() => handleMonth("prev")}>
+        <HomeScheduleHeaderArrowButton onClick={prevMonth}>
           <RiArrowLeftSLine />
         </HomeScheduleHeaderArrowButton>
-        <HomeScheduleHeaderArrowButton onClick={() => handleMonth("next")}>
+        <HomeScheduleHeaderArrowButton onClick={nextMonth}>
           <RiArrowRightSLine />
         </HomeScheduleHeaderArrowButton>
       </HomeScheduleHeaderArrowButtonWrap>

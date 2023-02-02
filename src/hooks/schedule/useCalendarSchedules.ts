@@ -14,13 +14,11 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
 } from "../../constants/token/token.constant";
-import { usePostModuleLog } from "../../queries/log/log.query";
 
-const useHomeSchedule = () => {
+const useCalendarSchedules = () => {
   const date = useRecoilValue(scheduleDateAtom);
   const [handleSchedule, setHandleSchedule] = useState<any[]>([]);
-  const [schedules, setSchedules] = useState<Schedule[]>([]);
-  const classificationKeyword = useRecoilValue(scheduleClassificationKeyword);
+  const classificationKeyword = useRecoilValue(scheduleClassificationKeyword); //전체일정, 내일정
 
   const { data: memberData } = useGetMember();
 
@@ -28,12 +26,6 @@ const useHomeSchedule = () => {
     startDate: date,
     endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
   });
-
-  useEffect(() => {
-    console.log(handleSchedule);
-  }, [handleSchedule]);
-
-  const postModuleLogMutation = usePostModuleLog();
 
   const loadCalendarSchedule = useCallback(() => {
     let newSchedulesData = schedulesData!.data;
@@ -45,7 +37,6 @@ const useHomeSchedule = () => {
             -1 || schedule.target === "전교생"
       );
     }
-
     newSchedulesData!.forEach((schedule) =>
       setHandleSchedule((prev) => {
         const newHandleCalendarSchedule = calendarScheduleTransform(schedule);
@@ -77,46 +68,6 @@ const useHomeSchedule = () => {
     return newHandleSchedule;
   };
 
-  const loadMyGradeSchedules = () => {
-    setSchedules(
-      schedulesData?.data.filter(
-        (schedule) =>
-          schedule.target.indexOf(String(memberData?.data.classroom.grade)) >
-            -1 || schedule.target === "전교생"
-      )!
-    );
-    postModuleLogMutation.mutate({
-      moduleName: "일정/내일정 조회",
-      description: "내일정 조회",
-    });
-  };
-
-  const loadAllSchedules = () => {
-    setSchedules(schedulesData!.data);
-    postModuleLogMutation.mutate({
-      moduleName: "일정/전체일정 조회",
-      description: "전체일정 조회",
-    });
-  };
-
-  const handleSchedules = (scope: string) => {
-    setSchedules([]);
-
-    switch (scope) {
-      case "전체 일정":
-        loadAllSchedules();
-        break;
-
-      case "내 일정":
-        loadMyGradeSchedules();
-        break;
-
-      default:
-        loadAllSchedules();
-        break;
-    }
-  };
-
   useEffect(() => {
     setHandleSchedule([]);
 
@@ -135,16 +86,9 @@ const useHomeSchedule = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (schedulesData?.data && !isLoading) {
-      handleSchedules(classificationKeyword);
-    }
-  }, [schedulesData?.data, isLoading, classificationKeyword]);
-
   return {
-    schedules,
     handleSchedule,
   };
 };
 
-export default useHomeSchedule;
+export default useCalendarSchedules;
