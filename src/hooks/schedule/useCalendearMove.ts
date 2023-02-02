@@ -6,7 +6,7 @@ import { usePostModuleLog } from "../../queries/log/log.query";
 import { scheduleDateAtom } from "../../store/schedule/schedule.store";
 import dateTransform from "../../util/transform/dateTransform";
 
-const useHandleHomeSchedule = () => {
+const useCalendearMove = () => {
   const calendarRef = createRef<ToastUIReactCalendar>();
   const [date, setDate] = useRecoilState(scheduleDateAtom);
 
@@ -66,4 +66,4 @@ const useHandleHomeSchedule = () => {
   };
 };
 
-export default useHandleHomeSchedule;
+export default useCalendearMove;
