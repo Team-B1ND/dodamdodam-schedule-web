@@ -7,7 +7,7 @@ import React from "react";
 import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
 import { useRecoilValue } from "recoil";
 import { scheduleDateAtom } from "../../../store/schedule/schedule.store";
-import useCalendarSchedules from "../../../hooks/schedule/\buseCalendarSchedules";
+import useCalendarSchedules from "../../../hooks/schedule/useCalendarSchedules";
 import useCalendearMove from "../../../hooks/schedule/useCalendearMove";
 
 const HomeSchedule = () => {

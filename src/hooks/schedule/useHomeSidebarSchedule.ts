@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { usePostModuleLog } from "../../queries/log/log.query";
 import { useGetMember } from "../../queries/member/member.query";
 import { useGetSchedulesByDate } from "../../queries/schedule/schedule.query";
 import {
@@ -24,28 +23,19 @@ const useHomeSidebarSchedule = () => {
     { suspense: true }
   );
 
-  const postModuleLogMutation = usePostModuleLog();
-
   const loadMyGradeSchedules = () => {
     setSchedules(
       schedulesData?.data.filter(
         (schedule) =>
-          schedule.target.indexOf(String(memberData?.data.classroom.grade)) >
-            -1 || schedule.target === "전교생"
+          schedule.targetGrades.indexOf(
+            String(memberData?.data.classroom.grade)
+          ) > -1 || schedule.targetGrades[0] === "전교생"
       )!
     );
-    postModuleLogMutation.mutate({
-      moduleName: "일정/내일정 조회",
-      description: "내일정 조회",
-    });
   };
 
   const loadAllSchedules = () => {
     setSchedules(schedulesData!.data);
-    postModuleLogMutation.mutate({
-      moduleName: "일정/전체일정 조회",
-      description: "전체일정 조회",
-    });
   };
 
   const handleSchedules = (scope: string) => {

@@ -8,7 +8,7 @@ import token from "../token/token";
 import { customAxiosInterceptor } from "./interceptor";
 
 export const dodamV6Axios = axios.create({
-  baseURL: config.SERVER,
+  baseURL: config.TEST_SERVER,
   headers: {
     "Access-Control-Allow-Origin": "*",
     [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)!}`,

@@ -23,11 +23,11 @@ const HomeScheduleSideBarItem = ({ schedule }: Props) => {
         </HomeScheduleSideBarItemTitle>
         <HomeScheduleSideBarItemTargetWrap
           backgroundColor={dataTransform.scheduleTargetTransform(
-            schedule.target
+            schedule.targetGrades[0]
           )}
         >
           <HomeScheduleSideBarItemTargetText>
-            {schedule.target}
+            {schedule.targetGrades}
           </HomeScheduleSideBarItemTargetText>
         </HomeScheduleSideBarItemTargetWrap>
       </HomeScheduleSideBarItemTitleWrap>

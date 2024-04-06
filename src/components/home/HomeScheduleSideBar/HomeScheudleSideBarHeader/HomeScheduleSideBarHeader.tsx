@@ -1,6 +1,9 @@
 import dayjs from "dayjs";
 import { useRecoilValue } from "recoil";
-import { scheduleClassificationKeyword } from "../../../../store/schedule/schedule.store";
+import {
+  scheduleClassificationKeyword,
+  scheduleDateAtom,
+} from "../../../../store/schedule/schedule.store";
 import HomeScheduleSideBarHeaderDropdown from "./HomeScheduleSideBarHeaderDropdown/HomeScheduleSideBarHeaderDropdown";
 import {
   HomeScheduleSideBarHeaderClassificationText,
@@ -9,13 +12,9 @@ import {
   HomeScheduleSideBarHeaderWrap,
 } from "./style";
 
-interface Props {
-  date: string;
-}
-
-const HomeScheduleSideBarHeader = ({ date }: Props) => {
+const HomeScheduleSideBarHeader = () => {
   const classificationKeyword = useRecoilValue(scheduleClassificationKeyword);
-
+  const date = useRecoilValue(scheduleDateAtom);
   return (
     <HomeScheduleSideBarHeaderContainer>
       <HomeScheduleSideBarHeaderWrap>

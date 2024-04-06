@@ -5,8 +5,9 @@ export interface Schedule {
   id: number;
   name: string;
   place: string;
+  type: "ACADEMIC" | "HOLIDAY";
   startDate: string;
-  target: string;
+  targetGrades: string[];
 }
 
 export interface SchedulesResponse extends Response {
