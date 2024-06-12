@@ -20,8 +20,6 @@ const useCalendarSchedules = () => {
   const [handleSchedule, setHandleSchedule] = useState<any[]>([]);
   const classificationKeyword = useRecoilValue(scheduleClassificationKeyword); //전체일정, 내일정
 
-  console.log(handleSchedule)
-
   const { data: memberData } = useGetMember();
 
   const { data: schedulesData, isLoading } = useGetSchedulesByDate({
