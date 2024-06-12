@@ -15,7 +15,6 @@ interface Props {
 }
 
 const HomeScheduleSideBarItem = ({ schedule }: Props) => {
-  console.log(schedule)
   return (
     <HomeScheduleSideBarItemContainer>
       <HomeScheduleSideBarItemTitleWrap>

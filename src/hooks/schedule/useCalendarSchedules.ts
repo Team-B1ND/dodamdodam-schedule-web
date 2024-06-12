@@ -20,6 +20,8 @@ const useCalendarSchedules = () => {
   const [handleSchedule, setHandleSchedule] = useState<any[]>([]);
   const classificationKeyword = useRecoilValue(scheduleClassificationKeyword); //전체일정, 내일정
 
+  console.log(handleSchedule)
+
   const { data: memberData } = useGetMember();
 
   const { data: schedulesData, isLoading } = useGetSchedulesByDate({
@@ -47,15 +49,15 @@ const useCalendarSchedules = () => {
 
   const calendarScheduleTransform = (schedule: Schedule) => {
     const scheduleColor = dataTransform.scheduleTargetTransform(
-      schedule.targetGrades[0]
+       dataTransform.scheduleTargetDataTransform(schedule.targetGrades[0])
     );
 
     const newHandleSchedule = {
       id: schedule.id,
       title: schedule.name,
       target: schedule.targetGrades[0],
-      attendees: [schedule.targetGrades[0]],
-      location: schedule.place || "장소 없음",
+      attendees: [dataTransform.scheduleTargetDataTransform(schedule.targetGrades[0])],
+      location: schedule.place === "ETC" ? "No Place" : schedule.place,
       category: "time",
       isReadOnly: true,
       borderColor: scheduleColor,
