@@ -15,6 +15,7 @@ interface Props {
 }
 
 const HomeScheduleSideBarItem = ({ schedule }: Props) => {
+  console.log(schedule)
   return (
     <HomeScheduleSideBarItemContainer>
       <HomeScheduleSideBarItemTitleWrap>
@@ -23,19 +24,19 @@ const HomeScheduleSideBarItem = ({ schedule }: Props) => {
         </HomeScheduleSideBarItemTitle>
         <HomeScheduleSideBarItemTargetWrap
           backgroundColor={dataTransform.scheduleTargetTransform(
-            schedule.target
+            dataTransform.scheduleTargetDataTransform(schedule.targetGrades[0])
           )}
         >
           <HomeScheduleSideBarItemTargetText>
-            {schedule.target}
+            {dataTransform.scheduleTargetDataTransform(schedule.targetGrades[0])}
           </HomeScheduleSideBarItemTargetText>
         </HomeScheduleSideBarItemTargetWrap>
       </HomeScheduleSideBarItemTitleWrap>
       <HomeScheduleSideBarItemContentWrap>
         <HomeScheduleSideBarItemDate>
-          {schedule.startDate === schedule.endDate
-            ? schedule.startDate
-            : `${schedule.startDate} ~ ${schedule.endDate}`}
+          {schedule.date[0] === schedule.date[1]
+            ? schedule.date[0]
+            : `${schedule.date[0]} ~ ${schedule.date[1]}`}
         </HomeScheduleSideBarItemDate>
       </HomeScheduleSideBarItemContentWrap>
     </HomeScheduleSideBarItemContainer>

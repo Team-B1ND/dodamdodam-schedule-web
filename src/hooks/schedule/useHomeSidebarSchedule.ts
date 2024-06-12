@@ -30,8 +30,8 @@ const useHomeSidebarSchedule = () => {
     setSchedules(
       schedulesData?.data.filter(
         (schedule) =>
-          schedule.target.indexOf(String(memberData?.data.classroom.grade)) >
-            -1 || schedule.target === "전교생"
+          schedule.targetGrades[0].indexOf(String(memberData?.data.classroom.grade)) >
+            -1 || schedule.targetGrades[0] === "전교생"
       )!
     );
     postModuleLogMutation.mutate({

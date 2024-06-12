@@ -5,15 +5,12 @@ import "@toast-ui/calendar/dist/toastui-calendar.min.css";
 import { HomeScheduleContainer } from "./style";
 import React from "react";
 import HomeScheduleHeader from "./HomeScheduleHeader/HomeSchduleHeader";
-import { useRecoilValue } from "recoil";
-import { scheduleDateAtom } from "../../../store/schedule/schedule.store";
 import useCalendarSchedules from "../../../hooks/schedule/\buseCalendarSchedules";
 import useCalendearMove from "../../../hooks/schedule/useCalendearMove";
 
 const HomeSchedule = () => {
-  const date = useRecoilValue(scheduleDateAtom);
   const { handleSchedule } = useCalendarSchedules();
-  const { calendarRef, todayMonth, prevMonth, nextMonth } = useCalendearMove();
+  const { date, calendarRef, todayMonth, prevMonth, nextMonth } = useCalendearMove();
 
   return (
     <HomeScheduleContainer>

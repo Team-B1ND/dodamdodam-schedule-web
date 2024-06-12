@@ -1,6 +1,24 @@
 import { palette } from "../../style/palette";
 
 class DataTransform {
+  public scheduleTargetDataTransform(target: string): string {
+    switch (target) {
+      case "GRADE_1":
+        return "1학년";
+      case "GRADE_2":
+        return "2학년";
+      case "GRADE_3":
+        return "3학년";
+      case "GRADE_ALL":
+        return "전교생";
+      case "GRADE_ETC":
+        return "기타";
+
+      default:
+        return "";
+    }
+  }
+
   public scheduleTargetTransform(target: string): string {
     switch (target) {
       case "1학년":

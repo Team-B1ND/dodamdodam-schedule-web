@@ -3,7 +3,7 @@ import { MyMemberResponse } from "../../types/member/member.type";
 
 class MemberRepository {
   public async getMyMember(): Promise<MyMemberResponse> {
-    const { data } = await dodamV6Axios.get<MyMemberResponse>("/members/my");
+    const { data } = await dodamV6Axios.get<MyMemberResponse>("/member/my");
     return data;
   }
 }
