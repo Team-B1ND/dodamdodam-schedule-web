@@ -1,12 +1,11 @@
 import { Response } from "../util/response.type";
 
 export interface Schedule {
-  endDate: string;
+  date: string[];
   id: number;
   name: string;
   place: string;
-  startDate: string;
-  target: string;
+  targetGrades: string[];
 }
 
 export interface SchedulesResponse extends Response {

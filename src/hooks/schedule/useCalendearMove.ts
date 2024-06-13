@@ -59,6 +59,7 @@ const useCalendearMove = () => {
   }, [calendarRef, setDate, postModuleLogMutation]);
 
   return {
+    date,
     calendarRef,
     nextMonth,
     prevMonth,

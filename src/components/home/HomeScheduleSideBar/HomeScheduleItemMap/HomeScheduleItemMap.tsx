@@ -8,7 +8,7 @@ const HomeScheduleItemMap = () => {
       {schedules.map((schedule) => (
         <HomeScheduleSideBarItem
           schedule={schedule}
-          key={`${schedule.startDate}~${schedule.endDate} ${schedule.target} ${schedule.name}`}
+          key={`${schedule.date[0]}~${schedule.date[1]} ${schedule.targetGrades[0]} ${schedule.name}`}
         />
       ))}
     </>

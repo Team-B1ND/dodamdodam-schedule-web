@@ -33,8 +33,8 @@ const useCalendarSchedules = () => {
     if (classificationKeyword === "내 일정") {
       newSchedulesData = newSchedulesData.filter(
         (schedule) =>
-          schedule.target.indexOf(String(memberData?.data.classroom.grade)) >
-            -1 || schedule.target === "전교생"
+          schedule.targetGrades[0].indexOf(String(memberData?.data.classroom.grade)) >
+            -1 || schedule.targetGrades[0] === "전교생"
       );
     }
     newSchedulesData!.forEach((schedule) =>
@@ -43,25 +43,25 @@ const useCalendarSchedules = () => {
         return [...prev, newHandleCalendarSchedule];
       })
     );
-  }, [classificationKeyword, memberData?.data.classroom.grade, schedulesData]);
+  }, [classificationKeyword, memberData?.data?.classroom?.grade, schedulesData]);
 
   const calendarScheduleTransform = (schedule: Schedule) => {
     const scheduleColor = dataTransform.scheduleTargetTransform(
-      schedule.target
+       dataTransform.scheduleTargetDataTransform(schedule.targetGrades[0])
     );
 
     const newHandleSchedule = {
       id: schedule.id,
       title: schedule.name,
-      target: schedule.target,
-      attendees: [schedule.target],
-      location: schedule.place || "장소 없음",
+      target: schedule.targetGrades[0],
+      attendees: [dataTransform.scheduleTargetDataTransform(schedule.targetGrades[0])],
+      location: schedule.place === "ETC" ? "No Place" : schedule.place,
       category: "time",
       isReadOnly: true,
       borderColor: scheduleColor,
       backgroundColor: scheduleColor,
-      start: schedule.startDate,
-      end: schedule.endDate,
+      start: schedule.date[0],
+      end: schedule.date[1],
       state: null,
     };
 
