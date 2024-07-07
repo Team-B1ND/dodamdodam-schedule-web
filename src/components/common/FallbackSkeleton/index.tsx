@@ -8,7 +8,6 @@ const FallbackSkeleton = () => {
           <SkeletonItem />
         ))}
       </SkeletonContainer>
-      ;
     </>
   );
 };
