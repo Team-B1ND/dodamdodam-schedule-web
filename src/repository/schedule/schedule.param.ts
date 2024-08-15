@@ -4,6 +4,6 @@ export interface getSchedulesParam {
 }
 
 export interface getSchedulesByDateParam {
-  startDate: string;
-  endDate: string;
+  startAt: string;
+  endAt: string;
 }
