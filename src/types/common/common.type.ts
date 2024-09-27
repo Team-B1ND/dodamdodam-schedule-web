@@ -1,6 +1,8 @@
-export interface ClassRoom {
-  readonly grade: number;
+export interface Student {
   readonly id: number;
-  readonly placeId: number;
+  readonly name: string;
   readonly room: number;
+  readonly grade: number;
+  readonly placeId: number;
+  readonly parentPhone: string;
 }

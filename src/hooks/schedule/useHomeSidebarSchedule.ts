@@ -24,7 +24,7 @@ const useHomeSidebarSchedule = () => {
     setSchedules(
       schedulesData?.data.filter(
         (schedule) =>
-          schedule.targetGrades[0].indexOf(String(memberData?.data.classroom.grade)) > -1 ||
+          schedule.targetGrades[0].indexOf(String(memberData?.data.student.grade)) > -1 ||
           schedule.targetGrades[0] === "전교생",
       )!,
     );
