@@ -14,8 +14,8 @@ const useHomeSidebarSchedule = () => {
   const { data: memberData } = useGetMember();
   const { data: schedulesData } = useGetSchedulesByDate(
     {
-      startDate: date,
-      endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
+      startAt: date,
+      endAt: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
     },
     { suspense: true },
   );

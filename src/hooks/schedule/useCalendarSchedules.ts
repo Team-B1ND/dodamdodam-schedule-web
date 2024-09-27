@@ -17,8 +17,8 @@ const useCalendarSchedules = () => {
   const { data: memberData } = useGetMember();
 
   const { data: schedulesData, isLoading } = useGetSchedulesByDate({
-    startDate: date,
-    endDate: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
+    startAt: date,
+    endAt: `${date.slice(0, 8)}${dayjs(date).daysInMonth()}`,
   });
 
   const loadCalendarSchedule = useCallback(() => {

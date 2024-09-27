@@ -24,7 +24,7 @@ export const useGetSchedules = ({
   );
 
 export const useGetSchedulesByDate = (
-  { startDate, endDate }: getSchedulesByDateParam,
+  { startAt, endAt }: getSchedulesByDateParam,
   options?: UseQueryOptions<
     SchduelsByDateResponse,
     AxiosError,
@@ -33,10 +33,10 @@ export const useGetSchedulesByDate = (
   >
 ): UseQueryResult<SchduelsByDateResponse, AxiosError> =>
   useQuery(
-    ["schedule/getSchedulesByDate", `${startDate}~${endDate}`],
-    () => scheduleRepository.getSchedulesByDate({ startDate, endDate }),
+    ["schedule/getSchedulesByDate", `${startAt}~${endAt}`],
+    () => scheduleRepository.getSchedulesByDate({ startAt, endAt }),
     {
-      enabled: !!startDate && !!endDate,
+      enabled: !!startAt && !!endAt,
       ...options,
       staleTime: 1000 * 60,
       cacheTime: 1000 * 60 * 60,
