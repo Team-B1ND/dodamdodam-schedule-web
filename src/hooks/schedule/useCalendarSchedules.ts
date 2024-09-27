@@ -27,7 +27,7 @@ const useCalendarSchedules = () => {
     if (classificationKeyword === "내 일정") {
       newSchedulesData = newSchedulesData.filter(
         (schedule) =>
-          schedule.targetGrades[0].indexOf(String(memberData?.data.classroom.grade)) > -1 ||
+          schedule.targetGrades[0].indexOf(String(memberData?.data.student.grade)) > -1 ||
           schedule.targetGrades[0] === "전교생",
       );
     }
@@ -37,7 +37,7 @@ const useCalendarSchedules = () => {
         return [...prev, newHandleCalendarSchedule];
       }),
     );
-  }, [classificationKeyword, memberData?.data?.classroom?.grade, schedulesData]);
+  }, [classificationKeyword, memberData?.data?.student?.grade, schedulesData]);
 
   const calendarScheduleTransform = (schedule: Schedule) => {
     const scheduleColor = dataTransform.scheduleTargetTransform(

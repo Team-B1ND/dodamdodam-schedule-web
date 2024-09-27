@@ -1,21 +1,15 @@
-import { ClassRoom } from "../common/common.type";
-
-export interface Member {
-  email: string;
-  id: string;
-  readonly joinDate: string;
-  name: string;
-  profileImage: null | string;
-  readonly role: string;
-  readonly status: "ACTIVE" | "DEACTIVATED";
-}
+import { Student } from "../common/common.type";
 
 export interface MyMemberResponse extends Response {
   data: {
-    classroom: ClassRoom;
     id: number;
-    member: Member;
+    name: string;
+    email: string;
     number: number;
     phone: string;
+    student: Student;
+    profileImage: null | string;
+    readonly role: string;
+    readonly status: "ACTIVE" | "DEACTIVATED";
   };
 }
