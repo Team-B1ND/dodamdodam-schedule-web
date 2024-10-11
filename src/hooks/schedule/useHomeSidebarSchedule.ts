@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { useGetMember } from "../../queries/member/member.query";
 import { useGetSchedulesByDate } from "../../queries/schedule/schedule.query";
@@ -20,21 +20,21 @@ const useHomeSidebarSchedule = () => {
     { suspense: true },
   );
 
-  const loadMyGradeSchedules = () => {
-    setSchedules(
-      schedulesData?.data.filter(
-        (schedule) =>
-          schedule.targetGrades[0].indexOf(String(memberData?.data.student.grade)) > -1 ||
-          schedule.targetGrades[0] === "전교생",
-      )!,
-    );
-  };
+  const handleSchedules = useCallback((scope: string) => {
+    const loadMyGradeSchedules = () => {
+      setSchedules(
+        schedulesData?.data.filter(
+          (schedule) =>
+            schedule.targetGrades[0].indexOf(String(memberData?.data.student.grade)) > -1 ||
+            schedule.targetGrades[0] === "전교생",
+        )!,
+      );
+    };
+  
+    const loadAllSchedules = () => {
+      setSchedules(schedulesData!.data);
+    };
 
-  const loadAllSchedules = () => {
-    setSchedules(schedulesData!.data);
-  };
-
-  const handleSchedules = (scope: string) => {
     setSchedules([]);
 
     switch (scope) {
@@ -50,13 +50,13 @@ const useHomeSidebarSchedule = () => {
         loadAllSchedules();
         break;
     }
-  };
+  }, [memberData?.data.student.grade, schedulesData]);
 
   useEffect(() => {
     if (schedulesData?.data) {
       handleSchedules(classificationKeyword);
     }
-  }, [schedulesData?.data, classificationKeyword]);
+  }, [schedulesData?.data, classificationKeyword, handleSchedules]);
 
   return {
     schedules,

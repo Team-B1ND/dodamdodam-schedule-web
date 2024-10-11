@@ -5,7 +5,7 @@ const FallbackSkeleton = () => {
     <>
       <SkeletonContainer>
         {Array.from({ length: 6 }).map((_, idx) => (
-          <SkeletonItem />
+          <SkeletonItem key={idx} />
         ))}
       </SkeletonContainer>
     </>
