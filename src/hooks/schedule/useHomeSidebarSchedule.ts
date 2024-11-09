@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import { useGetMember } from "../../queries/member/member.query";
 import { useGetSchedulesByDate } from "../../queries/schedule/schedule.query";
@@ -20,37 +20,40 @@ const useHomeSidebarSchedule = () => {
     { suspense: true },
   );
 
-  const handleSchedules = useCallback((scope: string) => {
-    const loadMyGradeSchedules = () => {
-      setSchedules(
-        schedulesData?.data.filter(
-          (schedule) =>
-            schedule.targetGrades[0].indexOf(String(memberData?.data.student.grade)) > -1 ||
-            schedule.targetGrades[0] === "전교생",
-        )!,
-      );
-    };
-  
-    const loadAllSchedules = () => {
-      setSchedules(schedulesData!.data);
-    };
 
-    setSchedules([]);
+  const loadMyGradeSchedules = useCallback(() => {
+    setSchedules(
+      schedulesData?.data.filter(
+        (schedule) =>
+          schedule.targetGrades[0].indexOf(String(memberData?.data.student.grade)) > -1 ||
+          schedule.targetGrades[0] === "전교생",
+      )!,
+    );
+  }, [schedulesData, memberData]);
 
-    switch (scope) {
-      case "전체 일정":
-        loadAllSchedules();
-        break;
+  const loadAllSchedules = useCallback(() => {
+    setSchedules(schedulesData!.data);
+  }, [schedulesData]);
 
-      case "내 일정":
-        loadMyGradeSchedules();
-        break;
+  const handleSchedules = useCallback(
+    (scope: string) => {
+      setSchedules([]);
 
-      default:
-        loadAllSchedules();
-        break;
-    }
-  }, [memberData?.data.student.grade, schedulesData]);
+      switch (scope) {
+        case "전체 일정":
+          loadAllSchedules();
+          break;
+
+        case "내 일정":
+          loadMyGradeSchedules();
+          break;
+        default:
+          loadAllSchedules();
+          break;
+      }
+    },
+    [loadAllSchedules, loadMyGradeSchedules]
+  );
 
   useEffect(() => {
     if (schedulesData?.data) {
