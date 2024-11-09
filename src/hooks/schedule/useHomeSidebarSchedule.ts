@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import { useGetMember } from "../../queries/member/member.query";
 import { useGetSchedulesByDate } from "../../queries/schedule/schedule.query";
@@ -20,7 +20,7 @@ const useHomeSidebarSchedule = () => {
     { suspense: true },
   );
 
-  const loadMyGradeSchedules = () => {
+  const loadMyGradeSchedules = useCallback(() => {
     setSchedules(
       schedulesData?.data.filter(
         (schedule) =>
@@ -28,35 +28,38 @@ const useHomeSidebarSchedule = () => {
           schedule.targetGrades[0] === "전교생",
       )!,
     );
-  };
+  }, [schedulesData, memberData]);
 
-  const loadAllSchedules = () => {
+  const loadAllSchedules = useCallback(() => {
     setSchedules(schedulesData!.data);
-  };
+  }, [schedulesData]);
 
-  const handleSchedules = (scope: string) => {
-    setSchedules([]);
+  const handleSchedules = useCallback(
+    (scope: string) => {
+      setSchedules([]);
 
-    switch (scope) {
-      case "전체 일정":
-        loadAllSchedules();
-        break;
+      switch (scope) {
+        case "전체 일정":
+          loadAllSchedules();
+          break;
 
-      case "내 일정":
-        loadMyGradeSchedules();
-        break;
+        case "내 일정":
+          loadMyGradeSchedules();
+          break;
 
-      default:
-        loadAllSchedules();
-        break;
-    }
-  };
+        default:
+          loadAllSchedules();
+          break;
+      }
+    },
+    [loadAllSchedules, loadMyGradeSchedules]
+  );
 
   useEffect(() => {
     if (schedulesData?.data) {
       handleSchedules(classificationKeyword);
     }
-  }, [schedulesData?.data, classificationKeyword]);
+  }, [schedulesData?.data, classificationKeyword, handleSchedules]);
 
   return {
     schedules,

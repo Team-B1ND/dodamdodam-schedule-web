@@ -17,5 +17,5 @@ class DateTransform {
     return dayjs(date).format("YYYY-MM-DD HH:mm");
   }
 }
-
-export default new DateTransform();
+const dateTransform = new DateTransform();
+export default dateTransform;

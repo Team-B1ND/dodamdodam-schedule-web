@@ -13,5 +13,5 @@ class ScheduleRepository {
     return data;
   }
 }
-
-export default new ScheduleRepository();
+const scheduleRepository = new ScheduleRepository();
+export default scheduleRepository;
