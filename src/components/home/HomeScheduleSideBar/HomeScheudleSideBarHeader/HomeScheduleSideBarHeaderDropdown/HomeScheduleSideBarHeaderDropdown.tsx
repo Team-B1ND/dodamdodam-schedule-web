@@ -19,18 +19,17 @@ const HomeScheduleSideBarHeaderDropdown = () => {
 
   return (
     <HomeScheduleSideBarHeaderDropdownContainer
-      onClick={() => setFold((prev) => !prev)}
-    >
+      onClick={() => setFold((prev) => !prev)}>
       {classificationKeyword}
       <HomeScheduleSideBarHeaderDropdownIcon fold={fold}>
         <BsFillTriangleFill />
       </HomeScheduleSideBarHeaderDropdownIcon>
       {!fold && (
         <HomeScheduleSideBarHeaderDropdownWrap>
-          {HOME_SCHEDULE_SIDE_BAR_HEADER_DROPDOWN_ITEMS.map((item) => (
+          {HOME_SCHEDULE_SIDE_BAR_HEADER_DROPDOWN_ITEMS.map((item, idx) => (
             <HomeScheduleSideBarHeaderDropdownItem
               onClick={() => setClassificationKeyword(item)}
-            >
+              key={idx}>
               {item}
             </HomeScheduleSideBarHeaderDropdownItem>
           ))}

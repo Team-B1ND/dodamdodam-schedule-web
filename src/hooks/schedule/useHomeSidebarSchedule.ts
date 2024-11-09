@@ -20,6 +20,7 @@ const useHomeSidebarSchedule = () => {
     { suspense: true },
   );
 
+
   const loadMyGradeSchedules = useCallback(() => {
     setSchedules(
       schedulesData?.data.filter(
@@ -46,7 +47,6 @@ const useHomeSidebarSchedule = () => {
         case "내 일정":
           loadMyGradeSchedules();
           break;
-
         default:
           loadAllSchedules();
           break;
