@@ -31,11 +31,7 @@
     "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "test": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
-    "eject": "react-scripts eject",
-    "preinstall": "npx npm-force-resolutions"
-  },
-  "resolutions": {
-    "react-error-overlay": "6.0.9"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
