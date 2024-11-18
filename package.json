@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@b1nd/b1nd-styled-components-util": "^1.0.1",
+    "@craco/craco": "^7.1.0",
     "@react-icons/all-files": "^4.1.0",
     "@team-b1nd/dodamdodam_web_component_library": "^1.2.2",
     "@testing-library/jest-dom": "^5.16.5",
@@ -13,13 +14,14 @@
     "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
     "dayjs": "^1.11.5",
+    "husky": "^9.1.6",
     "js-cookie": "^3.0.1",
     "jsonwebtoken": "^8.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.1.2",
     "react-query": "^3.39.2",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "recoil": "^0.7.5",
     "styled-components": "^5.3.5",
     "styled-reset": "^4.4.2",
@@ -28,8 +30,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && craco start",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && craco build",
     "test": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
     "eject": "react-scripts eject"
   },
