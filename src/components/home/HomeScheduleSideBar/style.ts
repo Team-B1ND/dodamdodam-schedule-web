@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const HomeScheduleSideBarContainer = styled.div`
-  min-width: 280px;
-  max-width: 280px;
+  min-width: 250px;
+  max-width: 250px;
   height: 100%;
   background-color: ${({ theme }) => theme.backgroundColor3};
   display: flex;
