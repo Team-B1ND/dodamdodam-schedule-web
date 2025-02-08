@@ -4,7 +4,7 @@ export const HomeScheduleSideBarContainer = styled.div`
   min-width: 250px;
   max-width: 250px;
   height: 100%;
-  background-color: ${({ theme }) => theme.backgroundColor3};
+  background-color: ${({ theme }) => theme.primaryNormal};
   display: flex;
   flex-direction: column;
   border: 1px solid ${({ theme }) => theme.borderColor};
