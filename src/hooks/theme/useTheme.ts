@@ -1,28 +1,27 @@
 import { useCallback, useMemo } from "react";
+import { THEME_KEY } from "src/constants/theme/theme.constant";
+import { ETheme } from "src/enum/theme/theme.enum";
 import { useRecoilState } from "recoil";
-import { THEME_KEY } from "../../constants/theme/theme.constant";
-import { ETheme } from "../../enum/theme/theme.enum";
-import { themeModeAtom } from "../../store/theme/theme.store";
+import { themeModeAtom } from "src/store/theme/theme.store";
 
-const useTheme = () => {
-  const [currentTheme, setCurrentTheme] = useRecoilState<ETheme>(themeModeAtom);
+/**
+ * 다크 모드를 관리하는 커스텀 훅
+ */
+export const useThemes = () => {
+    const [currentTheme, setCurrentTheme] = useRecoilState<ETheme>(themeModeAtom);
 
-  const { DARK, LIGHT } = ETheme;
+    const themeColor = useMemo((): ETheme => {
+      return currentTheme === ETheme.DARK ? ETheme.DARK : ETheme.LIGHT;
+    }, [currentTheme]);
 
-  const themeColor = useMemo((): ETheme => {
-    return currentTheme === DARK ? DARK : LIGHT
-  }, [currentTheme]);
+    const handleTheme = useCallback((): void => {
+      const switchTheme = currentTheme === ETheme.DARK ? ETheme.LIGHT : ETheme.DARK;
+      window.localStorage.setItem(THEME_KEY, switchTheme);
+      setCurrentTheme(switchTheme);
+    }, [currentTheme, setCurrentTheme]);
 
-  const handleTheme = useCallback((): void => {
-    const switchTheme = currentTheme === DARK ? LIGHT : DARK;
-    window.localStorage.setItem(THEME_KEY, String(switchTheme));
-    setCurrentTheme(switchTheme);
-  }, [DARK, LIGHT, currentTheme, setCurrentTheme]);
-
-  return {
-    themeColor,
-    handleTheme,
-  };
+    return {
+      themeColor,
+      handleTheme,
+    };
 };
-
-export default useTheme;

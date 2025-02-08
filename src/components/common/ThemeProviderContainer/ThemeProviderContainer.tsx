@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import useTheme from "../../../hooks/theme/useTheme";
+import {useThemes} from "../../../hooks/theme/useTheme";
 import { DodamThemeProvider, DodamGlobalStyles } from "@b1nd/dds-web";
 
 interface Props {
@@ -7,8 +7,7 @@ interface Props {
 }
 
 const ThemeProviderContainer = ({ children }: Props) => {
-  const { themeColor } = useTheme();
-  console.log(themeColor)
+  const { themeColor } = useThemes();
 
   return (
     <DodamThemeProvider theme={themeColor}>

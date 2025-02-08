@@ -1,8 +1,8 @@
 import { QueryClientProvider, QueryClient } from "react-query";
 import { RecoilRoot } from "recoil";
-import App from "./App";
 import PageTemplagte from "./components/common/PageTemplate/PageTemplate";
 import ThemeProviderContainer from "./components/common/ThemeProviderContainer/ThemeProviderContainer";
+import HomePage from "./pages/HomePage";
 
 const queryClient = new QueryClient();
 
@@ -11,9 +11,7 @@ const Root = () => {
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <ThemeProviderContainer>
-          <PageTemplagte>
-            <App />
-          </PageTemplagte>
+            <HomePage />
         </ThemeProviderContainer>
       </RecoilRoot>
     </QueryClientProvider>

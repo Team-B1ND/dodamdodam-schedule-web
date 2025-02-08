@@ -16,7 +16,23 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "sourceMap": true,
-    "inlineSources": true
+    "inlineSources": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@src/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@constant": ["src/constant/*"],
+      "@queries": ["src/queries/*"],
+      "@repositories": ["src/repositories/*"],
+      "@config": ["src/config/*"]
+    },
+    "baseUrl": "."
   },
+  
   "include": ["src"]
 }

@@ -5,8 +5,8 @@ import { HomeContainer } from "./style";
 const Home = () => {
   return (
     <HomeContainer>
-      <HomeScheduleSideBar />
-      <HomeSchedule />
+      
+      
     </HomeContainer>
   );
 };
