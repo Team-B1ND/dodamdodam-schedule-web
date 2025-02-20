@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SchedulePage = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: auto;
 
   display: flex;
 
@@ -11,7 +11,7 @@ export const SchedulePage = styled.div`
 
 export const SchduleWrap = styled.div`
   width: 100%;
-  height: 742px;
+  height: auto;
 
   display: flex;
 
