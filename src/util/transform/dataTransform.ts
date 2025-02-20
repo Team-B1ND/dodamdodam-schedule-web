@@ -22,18 +22,18 @@ class DataTransform {
   public scheduleTargetTransform(target: string): string {
     switch (target) {
       case "1학년":
-        return palette.schedule[1];
+        return palette.schedule.red;
       case "2학년":
-        return palette.schedule[2];
+        return palette.schedule.orange;
       case "3학년":
-        return palette.schedule[3];
+        return palette.schedule.yellow;
       case "전교생":
-        return palette.schedule[4];
+        return palette.schedule.green;
       case "기타":
-        return palette.schedule[5];
+        return palette.schedule.blue;
 
       default:
-        return palette.schedule[4];
+        return palette.schedule.green;
     }
   }
 
