@@ -47,7 +47,7 @@ export const IconWrap = styled.div`
   align-items: center;
 
   cursor: pointer;
-`
+`;
 
 export const Date = styled.p`
   color: ${({ theme }) => theme.labelAssistive};
@@ -153,5 +153,27 @@ export const CalendarWrap = styled.div`
 
     border-radius: 8px !important; /* DodamShape에 !important가 없어서 임시로 함 */
     background-color: ${({ theme }) => theme.primaryNormal} !important;
+  }
+
+  .toastui-calendar-weekday-event-title:only-child > span {
+    strong {
+      display: none;
+    }
+
+    span {
+      color: ${({ theme }) => theme.staticWhite};
+      ${DodamTypography.Caption1.Medium}
+    }
+  }
+
+  .toastui-calendar-weekday-event-title:not(:only-child) > span {
+    strong {
+      display: none;
+    }
+
+    span {
+      color: ${({ theme }) => theme.labelNeutral};
+      ${DodamTypography.Caption1.Medium}
+    }
   }
 `;

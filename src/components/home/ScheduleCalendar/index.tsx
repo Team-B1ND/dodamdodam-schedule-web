@@ -3,8 +3,11 @@ import Calendar from "@toast-ui/react-calendar";
 import "@toast-ui/calendar/dist/toastui-calendar.min.css";
 import { ChevronLeft, ChevronRight } from "@b1nd/dds-web";
 import { SCHEDULE_CATEGORY_ITEMS } from "src/constants/Schedule/schedule.constant";
+import { useSchedule } from "src/hooks/Schedule/useSchedule";
 
 const ScheduleCalendar = () => {
+  const { schedule } = useSchedule();
+
   return (
     <S.Container>
       <S.CalendarHeader>
@@ -38,6 +41,7 @@ const ScheduleCalendar = () => {
             }}
             isReadOnly
             useDetailPopup
+            events={schedule}
           />
         </S.CalendarWrap>
       </S.CalendarFooter>

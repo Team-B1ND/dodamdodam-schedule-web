@@ -8,6 +8,21 @@ export interface Schedule {
   targetGrades: string[];
 }
 
+export interface eventSchedule {
+  id: number;
+  title: string;
+  target: string;
+  attendees: string[];
+  location: string;
+  category: string;
+  isReadOnly: boolean;
+  borderColor: string;
+  backgroundColor: string;
+  start: string;
+  end: string;
+  state: null;
+}
+
 export interface SchedulesResponse extends Response {
   data: Schedule[];
 }

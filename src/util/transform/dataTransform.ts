@@ -55,10 +55,12 @@ class DataTransform {
         return "강당";
       case "AUDIOVISUAL_ROOM":
         return "시청각실";
+      case "ETC":
+        return "기타"
       case "NONE":
         return "장소없음";
       default:
-        return "기타";
+        return "";
     }
     
   }
