@@ -31,7 +31,6 @@ export const useSchedule = () => {
   };
 
   const calendarScheduleLoad = useCallback(() => {
-    console.log(scheduleData?.data);
     scheduleData?.data.map((schedule) => {
       setSchedule((prev) => {
         const newCalendarData = calendarScheduleTransform(schedule);

@@ -23,8 +23,6 @@ const ScheduleList = () => {
       return acc;
     }, {} as Record<string, typeof schedule>);
 
-  console.log(sortScheduleGroup);
-
   return (
     <S.Container>
       {Object.values(sortScheduleGroup).map((item, idx) => (

@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@b1nd/b1nd-styled-components-util": "^1.0.1",
-    "@b1nd/dds-web": "^0.1.30",
+    "@b1nd/dds-web": "^0.1.32",
     "@craco/craco": "^7.1.0",
     "@react-icons/all-files": "^4.1.0",
     "@testing-library/jest-dom": "^5.16.5",

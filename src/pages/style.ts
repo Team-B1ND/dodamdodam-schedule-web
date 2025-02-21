@@ -6,7 +6,7 @@ export const SchedulePage = styled.div`
 
   display: flex;
 
-  padding: 58px 32px 0 0;
+  padding: 58px 0 0 22px;
 `;
 
 export const SchduleWrap = styled.div`
