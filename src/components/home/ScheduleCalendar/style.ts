@@ -176,4 +176,33 @@ export const CalendarWrap = styled.div`
       ${DodamTypography.Caption1.Medium}
     }
   }
+
+  .toastui-calendar-detail-container {
+    border: 1px solid ${({ theme }) => theme.lineAlternative};
+    background-color: ${({ theme }) => theme.backgroundNormal};
+  }
+
+  .toastui-calendar-template-popupDetailTitle {
+    color: ${({ theme }) => theme.labelNormal};
+  }
+
+  .toastui-calendar-template-popupDetailDate {
+    color: ${({ theme }) => theme.labelNormal};
+  }
+
+  .toastui-calendar-template-popupDetailLocation {
+    color: ${({ theme }) => theme.labelNormal};
+  }
+
+  .toastui-calendar-template-popupDetailAttendees {
+    color: ${({ theme }) => theme.labelNormal};
+  }
+
+  .toastui-calendar-popup-arrow-border {
+    border-left: 7px solid ${({ theme }) => theme.lineAlternative} !important;
+  }
+
+  .toastui-calendar-popup-arrow-fill {
+    border-left: 7px solid ${({ theme }) => theme.backgroundNormal} !important;
+  }
 `;
