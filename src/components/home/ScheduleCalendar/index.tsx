@@ -4,20 +4,21 @@ import "@toast-ui/calendar/dist/toastui-calendar.min.css";
 import { ChevronLeft, ChevronRight } from "@b1nd/dds-web";
 import { SCHEDULE_CATEGORY_ITEMS } from "src/constants/Schedule/schedule.constant";
 import { useSchedule } from "src/hooks/Schedule/useSchedule";
+import dateTransform from "src/util/transform/dateTransform";
 
 const ScheduleCalendar = () => {
-  const { schedule } = useSchedule();
+  const { date, schedule, calendarRef, handleChangeDate } = useSchedule();
 
   return (
     <S.Container>
       <S.CalendarHeader>
         <S.Title>일정</S.Title>
         <S.DateWrap>
-          <S.IconWrap>
+          <S.IconWrap onClick={() => handleChangeDate("decrease")}>
             <ChevronLeft size={16} color="labelAssistive" />
           </S.IconWrap>
-          <S.Date>2024년 3월</S.Date>
-          <S.IconWrap>
+          <S.Date>{dateTransform.formatDate(date)}</S.Date>
+          <S.IconWrap onClick={() => handleChangeDate("increase")}>
             <ChevronRight size={16} color="labelAssistive" />
           </S.IconWrap>
         </S.DateWrap>
@@ -33,6 +34,7 @@ const ScheduleCalendar = () => {
         </S.Category>
         <S.CalendarWrap>
           <Calendar
+            ref={calendarRef}
             height="577px"
             view="month" // 'day', 'week' 가능
             month={{
