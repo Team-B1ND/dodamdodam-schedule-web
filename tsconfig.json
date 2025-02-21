@@ -23,7 +23,7 @@
       }
     ],
     "paths": {
-      "@src/*": ["src/*"],
+      "src/*": ["src/*"],
       "@/components/*": ["src/components/*"],
       "@/hooks/*": ["src/hooks/*"],
       "@constant": ["src/constant/*"],

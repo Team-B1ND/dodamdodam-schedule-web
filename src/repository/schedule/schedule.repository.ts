@@ -1,15 +1,28 @@
-import { dodamV6Axios } from "../../lib/axios/customAxios";
-import { SchduelsByDateResponse, SchedulesResponse } from "../../types/schedule/schedule.type";
+import { dodamV6Axios } from "../../lib/Axios/customAxios";
+import {
+  SchduelsByDateResponse,
+  SchedulesResponse,
+} from "../../types/Schedule/schedule.type";
 import { getSchedulesByDateParam, getSchedulesParam } from "./schedule.param";
 
 class ScheduleRepository {
-  public async getSchedules({ page, limit }: getSchedulesParam): Promise<SchedulesResponse> {
-    const { data } = await dodamV6Axios.get(`/schedule?limit=${limit}&page=${page}`);
+  public async getSchedules({
+    page,
+    limit,
+  }: getSchedulesParam): Promise<SchedulesResponse> {
+    const { data } = await dodamV6Axios.get(
+      `/schedule?limit=${limit}&page=${page}`
+    );
     return data;
   }
 
-  public async getSchedulesByDate({ startAt, endAt }: getSchedulesByDateParam): Promise<SchduelsByDateResponse> {
-    const { data } = await dodamV6Axios.get(`/schedule/search?startAt=${startAt}&endAt=${endAt}`);
+  public async getSchedulesByDate({
+    startAt,
+    endAt,
+  }: getSchedulesByDateParam): Promise<SchduelsByDateResponse> {
+    const { data } = await dodamV6Axios.get(
+      `/schedule/search?startAt=${startAt}&endAt=${endAt}`
+    );
     return data;
   }
 }

@@ -14,11 +14,6 @@ export const Container = styled.div`
 
   padding: 16px;
   gap: 16px;
-  overflow: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const List = styled.div`
@@ -29,6 +24,11 @@ export const List = styled.div`
   flex-direction: column;
 
   gap: 8px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const DateWrap = styled.div`

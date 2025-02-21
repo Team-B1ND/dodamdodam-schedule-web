@@ -1,5 +1,5 @@
 import axios from "axios";
-import { RefreshResponse } from "../../types/token/token.type";
+import { RefreshResponse } from "../../types/Token/token.type";
 import { postRefreshTokenParam } from "./token.param";
 import config from "../../config/config.json";
 

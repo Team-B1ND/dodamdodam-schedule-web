@@ -3,12 +3,12 @@ import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
 import {
   getSchedulesByDateParam,
   getSchedulesParam,
-} from "../../repository/schedule/schedule.param";
-import scheduleRepository from "../../repository/schedule/schedule.repository";
+} from "../../repository/Schedule/schedule.param";
+import scheduleRepository from "../../repository/Schedule/schedule.repository";
 import {
   SchduelsByDateResponse,
   SchedulesResponse,
-} from "../../types/schedule/schedule.type";
+} from "../../types/Schedule/schedule.type";
 
 export const useGetSchedules = ({
   page,

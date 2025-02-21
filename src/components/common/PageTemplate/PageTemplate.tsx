@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { PageTemplateContainer } from "./style";
 import { DodamNavBar } from "@b1nd/dds-web";
 import { useAuth } from "src/hooks/Auth/useAuth";
-import { useThemes } from "src/hooks/theme/useTheme";
+import { useThemes } from "src/hooks/Theme/useTheme";
 
 interface Props {
   children: ReactNode;

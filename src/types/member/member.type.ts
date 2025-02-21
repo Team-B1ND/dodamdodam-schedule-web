@@ -1,4 +1,4 @@
-import { Student } from "../common/common.type";
+import { Student } from "../Common/common.type";
 
 export interface MyMemberResponse extends Response {
   data: {

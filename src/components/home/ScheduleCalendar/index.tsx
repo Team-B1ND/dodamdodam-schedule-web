@@ -4,7 +4,7 @@ import "@toast-ui/calendar/dist/toastui-calendar.min.css";
 import { ChevronLeft, ChevronRight } from "@b1nd/dds-web";
 import { SCHEDULE_CATEGORY_ITEMS } from "src/constants/Schedule/schedule.constant";
 import { useSchedule } from "src/hooks/Schedule/useSchedule";
-import dateTransform from "src/util/transform/dateTransform";
+import dateTransform from "src/util/Transform/dateTransform";
 
 const ScheduleCalendar = () => {
   const { date, schedule, calendarRef, handleChangeDate } = useSchedule();

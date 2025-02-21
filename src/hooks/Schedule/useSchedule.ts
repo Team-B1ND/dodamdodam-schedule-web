@@ -1,17 +1,19 @@
 import dayjs from "dayjs";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
-import { scheduleDateAtom } from "src/store/schedule/schedule.store";
-import { useGetSchedulesByDate } from "src/queries/schedule/schedule.query";
-import { eventSchedule, Schedule } from "src/types/schedule/schedule.type";
-import dataTransform from "src/util/transform/dataTransform";
+import { scheduleDateAtom } from "src/store/Schedule/schedule.store";
+import { useGetSchedulesByDate } from "src/queries/Schedule/schedule.query";
+import { eventSchedule, Schedule } from "src/types/Schedule/schedule.type";
+import dataTransform from "src/util/Transform/dataTransform";
 import ToastUIReactCalendar from "@toast-ui/react-calendar";
 
 export const useSchedule = () => {
   const calendarRef = useRef<ToastUIReactCalendar>(null);
   const [date, setDate] = useRecoilState(scheduleDateAtom);
   const [schedule, setSchedule] = useState<eventSchedule[]>([]);
-  const [scheduleList, setScheduleList] = useState<any[]>([]);
+  const [sortScheduleGroup, setSortScheduleGroup] = useState<
+    Record<string, typeof schedule>
+  >({});
 
   const { data: scheduleData, isLoading } = useGetSchedulesByDate({
     startAt: date,
@@ -73,9 +75,31 @@ export const useSchedule = () => {
     }
   }, [scheduleData?.data, isLoading, calendarScheduleLoad, date]);
 
+  useEffect(() => {
+    const scheduleGroup = schedule.reduce((acc, item) => {
+      const key = item.start;
+
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+      acc[key].push(item);
+      return acc;
+    }, {} as Record<string, typeof schedule>);
+
+    const sortScheduleGroup = Object.keys(scheduleGroup)
+      .sort((a, b) => new Date(a).getTime() - new Date(b).getTime()) // 날짜 순으로 정렬
+      .reduce((acc, key) => {
+        acc[key] = scheduleGroup[key];
+        return acc;
+      }, {} as Record<string, typeof schedule>);
+
+    setSortScheduleGroup(sortScheduleGroup);
+  }, [schedule]);
+
   return {
     date,
     schedule,
+    sortScheduleGroup,
     calendarRef,
     handleChangeDate,
   };

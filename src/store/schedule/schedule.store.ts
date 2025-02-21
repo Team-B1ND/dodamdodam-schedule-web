@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import dateTransform from "../../util/transform/dateTransform";
+import dateTransform from "../../util/Transform/dateTransform";
 
 export const scheduleDateAtom = atom<string>({
   key: "schedule/scheduleDateAtom",

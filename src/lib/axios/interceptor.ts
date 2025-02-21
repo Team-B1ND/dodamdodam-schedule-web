@@ -3,9 +3,9 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
   REQUEST_TOKEN_KEY,
-} from "../../constants/token/token.constant";
-import tokenRepository from "../../repository/token/token.repository";
-import token from "../token/token";
+} from "../../constants/Token/token.constant";
+import tokenRepository from "../../repository/Token/token.repository";
+import token from "../Token/token";
 import { dodamV6Axios } from "./customAxios";
 
 export const customAxiosInterceptor = async (
