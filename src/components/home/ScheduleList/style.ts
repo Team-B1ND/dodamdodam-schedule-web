@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 322px;
   height: min-content;
+  max-height: 200px;
 
   display: flex;
   flex-direction: column;
@@ -13,6 +14,11 @@ export const Container = styled.div`
 
   padding: 16px;
   gap: 16px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const List = styled.div`
@@ -55,12 +61,12 @@ export const Content = styled.div`
   gap: 6px;
 `;
 
-export const Color = styled.div`
+export const Color = styled.div<{ color: string }>`
   width: 6px;
   height: 6px;
 
   border-radius: 50%;
-  background-color: #ffd338;
+  background-color: ${({ color }) => color};
 `;
 
 export const Text = styled.p`

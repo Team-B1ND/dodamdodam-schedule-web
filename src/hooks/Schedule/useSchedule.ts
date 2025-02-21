@@ -11,6 +11,7 @@ export const useSchedule = () => {
   const calendarRef = useRef<ToastUIReactCalendar>(null);
   const [date, setDate] = useRecoilState(scheduleDateAtom);
   const [schedule, setSchedule] = useState<eventSchedule[]>([]);
+  const [scheduleList, setScheduleList] = useState<any[]>([]);
 
   const { data: scheduleData, isLoading } = useGetSchedulesByDate({
     startAt: date,

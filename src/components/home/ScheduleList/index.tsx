@@ -1,20 +1,50 @@
+import dayjs from "dayjs";
+import "dayjs/locale/ko";
 import * as S from "./style";
+import { useSchedule } from "src/hooks/Schedule/useSchedule";
 
 const ScheduleList = () => {
+  const { schedule } = useSchedule();
+
+  const scheduleGroup = schedule.reduce((acc, item) => {
+    const key = item.start;
+
+    if (!acc[key]) {
+      acc[key] = [];
+    }
+    acc[key].push(item);
+    return acc;
+  }, {} as Record<string, typeof schedule>);
+
+  const sortScheduleGroup = Object.keys(scheduleGroup)
+    .sort((a, b) => new Date(a).getTime() - new Date(b).getTime()) // 날짜 순으로 정렬
+    .reduce((acc, key) => {
+      acc[key] = scheduleGroup[key];
+      return acc;
+    }, {} as Record<string, typeof schedule>);
+
+  console.log(sortScheduleGroup);
+
   return (
     <S.Container>
-      <S.List>
-        <S.DateWrap>
-          <S.DayNum>11일</S.DayNum>
-          <S.DayStr>월요일</S.DayStr>
-        </S.DateWrap>
-        <S.ContentWrap>
-          <S.Content>
-            <S.Color />
-            <S.Text>타운홀미팅</S.Text>
-          </S.Content>
-        </S.ContentWrap>
-      </S.List>
+      {Object.values(sortScheduleGroup).map((item, idx) => (
+        <S.List key={idx}>
+          <S.DateWrap>
+            <S.DayNum>{dayjs(item[0].start).format("D일")}</S.DayNum>
+            <S.DayStr>
+              {dayjs(item[0].start).locale("ko").format("dddd")}
+            </S.DayStr>
+          </S.DateWrap>
+          <S.ContentWrap>
+            {item.map((item) => (
+              <S.Content key={item.id}>
+                <S.Color color={item.backgroundColor} />
+                <S.Text>{item.title}</S.Text>
+              </S.Content>
+            ))}
+          </S.ContentWrap>
+        </S.List>
+      ))}
     </S.Container>
   );
 };
