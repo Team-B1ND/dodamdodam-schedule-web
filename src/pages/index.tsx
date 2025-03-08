@@ -1,6 +1,6 @@
-import * as S from "./style";
-import Schedule from "src/components/Home/ScheduleCalendar";
-import ScheduleList from "src/components/Home/ScheduleList";
+import * as S from './style'
+import Schedule from 'src/components/Home/ScheduleCalendar'
+import ScheduleList from 'src/components/Home/ScheduleList'
 
 const HomePage = () => {
   return (
@@ -10,7 +10,7 @@ const HomePage = () => {
         <ScheduleList />
       </S.SchduleWrap>
     </S.SchedulePage>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

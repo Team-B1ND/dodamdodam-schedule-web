@@ -35,7 +35,7 @@ const ScheduleCalendar = () => {
         <S.CalendarWrap>
           <Calendar
             ref={calendarRef}
-            height={window.innerWidth > 834 ? '700px' : '680px'}
+            height={window.innerWidth > 834 ? '75vh' : '70vh'} // 화면 높이의 80%
             view='month' // 'day', 'week' 가능
             month={{
               dayNames: ['일', '월', '화', '수', '목', '금', '토'],

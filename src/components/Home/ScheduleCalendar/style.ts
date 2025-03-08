@@ -105,7 +105,7 @@ export const Text = styled.p`
 
 export const CalendarWrap = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
 
   .container {
     border: 1px solid ${({ theme }) => theme.lineAlternative};
