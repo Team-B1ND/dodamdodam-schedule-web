@@ -14,6 +14,11 @@ export const Container = styled.div`
   padding: 24px;
   gap: 24px;
 
+  @media (max-width: 1068px) {
+    width: 70%;
+    height: 85%;
+  }
+
   @media (max-width: 834px) {
     width: 75%;
     height: 90%;
