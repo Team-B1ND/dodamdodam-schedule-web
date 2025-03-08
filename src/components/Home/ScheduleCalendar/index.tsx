@@ -13,7 +13,7 @@ const ScheduleCalendar = () => {
 
   useEffect(() => {
     const updateHeight = () => {
-      const height = window.innerWidth > 834 ? '600px' : '680px'
+      const height = window.innerWidth > 1068 ? '70vh' : '60vh'
       setCalendarHeight(height)
     }
 
