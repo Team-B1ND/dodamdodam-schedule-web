@@ -1,9 +1,9 @@
-import { DodamShape, DodamTypography, hexToRgba } from "@b1nd/dds-web";
-import styled from "styled-components";
+import { DodamShape, DodamTypography, hexToRgba } from '@b1nd/dds-web'
+import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 830px;
-  height: 706px;
+  width: 75%;
+  height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -13,7 +13,14 @@ export const Container = styled.div`
 
   padding: 24px;
   gap: 24px;
-`;
+
+  @media (max-width: 834px) {
+    width: 75%;
+    height: 90%;
+
+    padding: 10px;
+  }
+`
 
 export const CalendarHeader = styled.div`
   width: 100%;
@@ -22,12 +29,12 @@ export const CalendarHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-`;
+`
 
 export const Title = styled.p`
   color: ${({ theme }) => theme.labelNormal};
   ${DodamTypography.Heading1.Bold}
-`;
+`
 
 export const DateWrap = styled.div`
   width: auto;
@@ -37,7 +44,7 @@ export const DateWrap = styled.div`
   align-items: center;
 
   gap: 8px;
-`;
+`
 
 export const IconWrap = styled.div`
   width: auto;
@@ -47,12 +54,12 @@ export const IconWrap = styled.div`
   align-items: center;
 
   cursor: pointer;
-`;
+`
 
 export const Date = styled.p`
   color: ${({ theme }) => theme.labelAssistive};
   ${DodamTypography.Label.Medium};
-`;
+`
 
 export const CalendarFooter = styled.div`
   width: 100%;
@@ -61,7 +68,7 @@ export const CalendarFooter = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-`;
+`
 
 export const Category = styled.div`
   width: auto;
@@ -71,7 +78,7 @@ export const Category = styled.div`
 
   padding: 8px 0;
   gap: 12px;
-`;
+`
 
 export const Item = styled.div`
   width: auto;
@@ -81,7 +88,7 @@ export const Item = styled.div`
   align-items: center;
 
   gap: 6px;
-`;
+`
 
 export const Color = styled.div<{ color: string }>`
   width: 6px;
@@ -89,15 +96,16 @@ export const Color = styled.div<{ color: string }>`
 
   border-radius: 50%;
   background-color: ${({ color }) => color};
-`;
+`
 
 export const Text = styled.p`
   color: ${({ theme }) => theme.labelNeutral};
   ${DodamTypography.Caption1.Medium}
-`;
+`
 
 export const CalendarWrap = styled.div`
   width: 100%;
+  height: 100%;
 
   .container {
     border: 1px solid ${({ theme }) => theme.lineAlternative};
@@ -205,4 +213,4 @@ export const CalendarWrap = styled.div`
   .toastui-calendar-popup-arrow-fill {
     border-left: 7px solid ${({ theme }) => theme.backgroundNormal} !important;
   }
-`;
+`
