@@ -1,14 +1,10 @@
-import { ReactNode } from "react";
 import { PageTemplateContainer } from "./style";
 import { DodamNavBar } from "@b1nd/dds-web";
 import { useAuth } from "src/hooks/Auth/useAuth";
 import { useThemes } from "src/hooks/Theme/useTheme";
+import { Outlet } from "react-router-dom";
 
-interface Props {
-  children: ReactNode;
-}
-
-const PageTemplagte = ({ children }: Props) => {
+const PageTemplagte = () => {
   const { handleClickLogout } = useAuth();
   const { themeColor, handleTheme } = useThemes();
 
@@ -20,7 +16,7 @@ const PageTemplagte = ({ children }: Props) => {
         handleTheme={handleTheme}
         logout={handleClickLogout}
       />
-      {children}
+      <Outlet />
     </PageTemplateContainer>
   );
 };
