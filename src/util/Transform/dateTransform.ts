@@ -17,7 +17,7 @@ class DateTransform {
     return dayjs(date).format("YYYY-MM-DD HH:mm");
   }
 
-  public formatDate(date?: string): string {
+  public YearMonth(date?: string): string {
     return dayjs(date).format("YYYY년 M월");
   }
 }

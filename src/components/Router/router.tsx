@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "src/pages";
+import HomePage from "src/pages/page";
 import PageTemplagte from "../Common/PageTemplate/PageTemplate";
 import { DodamNotFoundPage } from "@b1nd/dds-web";
 
