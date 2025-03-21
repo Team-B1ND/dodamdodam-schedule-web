@@ -17,7 +17,7 @@ const ScheduleCalendar = () => {
           <S.IconWrap onClick={() => handleChangeDate("decrease")}>
             <ChevronLeft size={16} color="labelAssistive" />
           </S.IconWrap>
-          <S.Date>{dateTransform.YearMonth(date)}</S.Date>
+          <S.Date>{dateTransform.yearMonth(date)}</S.Date>
           <S.IconWrap onClick={() => handleChangeDate("increase")}>
             <ChevronRight size={16} color="labelAssistive" />
           </S.IconWrap>
