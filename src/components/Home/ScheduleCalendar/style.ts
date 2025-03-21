@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 70%;
-  height: 100%;
+  height: min-content;
+  max-height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -14,16 +15,14 @@ export const Container = styled.div`
   padding: 24px;
   gap: 24px;
 
-  @media (max-width: 1068px) {
-    width: 65%;
-    height: 87%;
+  @media (max-width: 1280px) {
+    width: 100%;
+    max-height: none;
   }
 
-  @media (max-width: 834px) {
-    width: 75%;
-    height: 74%;
-
-    padding: 10px;
+  @media (max-height: 794px) {
+    width: auto;
+    max-height: none;
   }
 `;
 
@@ -68,7 +67,6 @@ export const Date = styled.p`
 
 export const CalendarFooter = styled.div`
   width: 100%;
-  height: auto;
 
   display: flex;
   flex-direction: column;
@@ -110,12 +108,23 @@ export const Text = styled.p`
 
 export const CalendarWrap = styled.div`
   width: 100%;
-  height: 90%;
 
   .container {
+    height: auto !important;
+    aspect-ratio: 1 / 1;
     border: 1px solid ${({ theme }) => theme.lineAlternative};
     border-radius: 4px;
     user-select: none;
+
+    @media (min-width: 1350px) {
+      height: 70vh !important;
+      aspect-ratio: 0 !important;
+    }
+
+    @media (max-height: 794px) {
+      height: min-content !important;
+      aspect-ratio: 1 / 1 !important;
+    }
   }
 
   .toastui-calendar-layout {

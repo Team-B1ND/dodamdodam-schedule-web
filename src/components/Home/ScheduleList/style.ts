@@ -2,7 +2,7 @@ import { DodamShape, DodamTypography } from "@b1nd/dds-web";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 322px;
+  width: 30%;
   height: min-content;
   max-height: 200px;
 
@@ -14,6 +14,21 @@ export const Container = styled.div`
 
   padding: 16px;
   gap: 16px;
+
+  @media (max-width: 1280px), (max-height: 794px) {
+    width: 100%;
+    max-height: 50%;
+  }
+
+  @media (max-height: 794px) {
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 1068px) {
+    height: min-content;
+    max-height: 30%;
+    margin-bottom: 24px;
+  }
 `;
 
 export const List = styled.div`
@@ -28,6 +43,10 @@ export const List = styled.div`
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (max-width: 1280px) {
+    gap: 20px;
   }
 `;
 
