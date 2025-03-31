@@ -15,7 +15,7 @@ export const PageTemplateContainer = styled.div`
     }
 
     // 선택된거 배경색 변경
-    & > div:nth-child(2) > div > a:nth-child(2) {
+    & > div:nth-child(2) > div > a:nth-child(3) {
       background-color: ${April_Fools_Day_Theme.primaryNormal};
     }
   }
