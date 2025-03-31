@@ -1,5 +1,4 @@
 import { DodamShape, DodamTypography, hexToRgba } from "@b1nd/dds-web";
-import { April_Fools_Day_Theme } from "src/style/theme";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -175,8 +174,7 @@ export const CalendarWrap = styled.div`
     ${DodamTypography.Label.Medium}
 
     border-radius: 8px !important; /* DodamShape에 !important가 없어서 임시로 함 */
-    /* background-color: ${({ theme }) => theme.primaryNormal} !important; */
-    background-color: ${April_Fools_Day_Theme.primaryNormal} !important;
+    background-color: ${({ theme }) => theme.primaryNormal} !important;
   }
 
   .toastui-calendar-weekday-event-title:only-child > span {
